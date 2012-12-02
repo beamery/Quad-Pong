@@ -14,7 +14,6 @@
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="GameOverState.cpp" />
-    <ClCompile Include="Global.cpp" />
     <ClCompile Include="InnerGameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
@@ -25,10 +24,11 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorComponent.h" />
     <ClInclude Include="Error.h" />
-    <ClInclude Include="EventManager.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Event.h" />
-    <ClInclude Include="Global.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="notes.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{98C30B4B-15ED-4C8C-97DA-99E1B44A07BC}</ProjectGuid>

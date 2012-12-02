@@ -1,0 +1,3 @@
+Currently Working on: Events and EventManager
+- Want to get the event manager set up so that changing states can be done 
+  through passing events. Done!

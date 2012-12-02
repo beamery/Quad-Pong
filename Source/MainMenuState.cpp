@@ -1,8 +1,8 @@
 #include <SFML/OpenGL.hpp>
-#include "Global.h"
 // FOR TESTING, REMOVE LATER
 
 #include "GameState.h"
+#include "Event.h"
 
 void MainMenuState::init()
 {
@@ -15,7 +15,12 @@ void MainMenuState::update(double elapsedTime)
 
 	timer += elapsedTime;
 
-	if (timer > 2)
-		stateManager->changeState("inner_game");	
+	if (timer > 0.33)
+	{
+		ChangeGameStateEvtData *data = 
+			new ChangeGameStateEvtData("inner_game", "main_menu", true);
+		
+		EventManager::get()->queueEvent((IEventData*)data);
+	}
 
 }

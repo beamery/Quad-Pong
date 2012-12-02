@@ -7,11 +7,11 @@
 #include <SFML/OpenGL.hpp>
 #include <iostream>
 #include "GameState.h"
-#include "Global.h"
 
 using namespace std;
 
 bool handleEvent(sf::Event event);
+void initEventManager();
 void initGameState();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -30,6 +30,7 @@ int main()
 	sf::Clock clock;
 
 	// Initialize game data
+	initEventManager();
 	initGameState();
 
     // Start main loop
@@ -50,10 +51,11 @@ int main()
 			Running = handleEvent(event);
 		}
 
-		// TODO: Handle game events
+		// Handle game events
+		EventManager::get()->update();	
 
 		// Update game state
-		stateManager->getCurrentState()->update(elapsedTime);
+		StateManager::get()->getCurrentState()->update(elapsedTime);
 
 
 		// RENDERING CODE FOR TESTING, REMOVE LATER
@@ -77,19 +79,32 @@ int main()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Initialize our event manager, called once at program startup
+////////////////////////////////////////////////////////////////////////////////
+void initEventManager()
+{
+	EventManager *eventManager = new EventManager(true, "Main Event Manager");
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////
 // Initialize our state manager, called once at program startup
 ////////////////////////////////////////////////////////////////////////////////
 void initGameState()
 {
+	StateManager *stateManager = new StateManager(true);
+	EventManager::get()->addListener((IEventListener*)stateManager);
+
 	MainMenuState *mainMenu = new MainMenuState();
 	InnerGameState *innerGame = new InnerGameState();
 	GameOverState *gameOver = new GameOverState();
 
-	stateManager->addState("main_menu", mainMenu);
-	stateManager->addState("inner_game", innerGame);
-	stateManager->addState("game_over", gameOver);
+	StateManager::get()->addState("main_menu", mainMenu);
+	StateManager::get()->addState("inner_game", innerGame);
+	StateManager::get()->addState("game_over", gameOver);
 
-	stateManager->changeState("main_menu");
+	StateManager::get()->changeState("main_menu");
 }
 
 ////////////////////////////////////////////////////////////////////////////////

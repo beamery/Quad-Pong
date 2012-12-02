@@ -12,8 +12,10 @@ void Error::print(Status status)
 	// no error
 	case OK:	
 		cerr << "no error"; break;
-	case INVALID_STATE_ERROR: 
+	case INVALID_STATE_ERR: 
 		cerr << "invalid state"; break;
+	case DUPLICATE_LISTENER_ERR:
+		cerr << "duplicate listener"; break;
 
 	default:	
 		cerr << "undefined error code: " << status;

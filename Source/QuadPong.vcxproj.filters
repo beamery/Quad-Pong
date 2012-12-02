@@ -46,9 +46,6 @@
     <ClCompile Include="StateManager.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="Global.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -60,17 +57,16 @@
     <ClInclude Include="Event.h">
       <Filter>Source Files\Event</Filter>
     </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Source Files\Event</Filter>
-    </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Source Files\Actors</Filter>
     </ClInclude>
     <ClInclude Include="ActorComponent.h">
       <Filter>Source Files\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="Global.h">
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="notes.txt">
       <Filter>Source Files</Filter>
-    </ClInclude>
+    </Text>
   </ItemGroup>
 </Project>

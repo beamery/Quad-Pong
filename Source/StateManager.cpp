@@ -3,7 +3,15 @@
 
 using namespace std;
 
-StateManager::StateManager() : currentState(nullptr) {}
+StateManager *StateManager::globalStateManager = nullptr;
+
+StateManager::StateManager(bool global) : 
+	ChangeGameStateListener(), currentState(nullptr)
+{
+	if (global)
+		StateManager::globalStateManager = this;
+}
+
 
 StateManager::~StateManager() { delete currentState; }
 
@@ -18,12 +26,25 @@ IGameState * StateManager::getCurrentState()
 	return currentState;
 }
 
-void StateManager::changeState(string newState)
+void StateManager::changeState(string newState, bool init)
 {
 	// If we give an invalid state, throw an error
 	if (stateDict.count(newState) == 0)
-		throw INVALID_STATE_ERROR;
+		throw INVALID_STATE_ERR;
 
 	currentState = stateDict[newState];
-	currentState->init();
+
+	if (init)
+		currentState->init();
 }
+
+void StateManager::onChangeGameState(ChangeGameStateEvtData *event)
+{
+	changeState(event->getNextState(), event->needsInit());
+}
+
+StateManager * StateManager::get()
+{
+	return StateManager::globalStateManager;
+}
+

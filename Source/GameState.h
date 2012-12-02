@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include "Event.h"
 
 using namespace std;
 
@@ -40,11 +41,14 @@ private:
 	double timer;
 };
 
-class StateManager
+class StateManager : public ChangeGameStateListener	
 {
 public:
+	// Get global state manager
+	static StateManager * get();
+
 	// Initialize StateManager with currentState = null
-	StateManager();
+	StateManager(bool global);
 
 	// Delete game state as well as currentState
 	~StateManager();
@@ -56,9 +60,14 @@ public:
 	IGameState * getCurrentState();
 
 	// Change the current game state to newState and initialize newState
-	void changeState(string newState);
+	void changeState(string newState, bool init = true);
+
+	// Overrides: ChangeGameStateListener::onChangeGameState()
+	void onChangeGameState(ChangeGameStateEvtData *event);
 
 private:
+	static StateManager *globalStateManager;
+
 	map<string, IGameState*> stateDict;
 	IGameState *currentState;
 };

@@ -1,8 +1,8 @@
 #include <SFML/OpenGL.hpp>
-#include "Global.h"
 // FOR TESTING, REMOVE LATER
 
 #include "GameState.h"
+#include "Event.h"
 
 void InnerGameState::init()
 {
@@ -15,7 +15,12 @@ void InnerGameState::update(double elapsedTime)
 
 	timer += elapsedTime;
 
-	if (timer > 2)
-		stateManager->changeState("game_over");
+	if (timer > 0.33)
+	{
+		ChangeGameStateEvtData *data = 
+			new ChangeGameStateEvtData("game_over", "inner_game", true);
+
+		EventManager::get()->queueEvent((IEventData*)data);
+	}
 
 }

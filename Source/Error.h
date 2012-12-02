@@ -8,7 +8,10 @@ enum Status
 	OK = 0, NOTUSED = -999,
 
 // Game state errors
-	STATE_INIT_ERR, UPDATE_ERR, INVALID_STATE_ERROR
+	STATE_INIT_ERR, UPDATE_ERR, INVALID_STATE_ERR, 
+
+// Game event errors
+	DUPLICATE_LISTENER_ERR
 
 };
 
