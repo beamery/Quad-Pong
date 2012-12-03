@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActorFactory.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="GameOverState.cpp" />
@@ -19,16 +20,20 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
-    <ClInclude Include="ActorComponent.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="test.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{98C30B4B-15ED-4C8C-97DA-99E1B44A07BC}</ProjectGuid>

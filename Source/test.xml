@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <VisualComponent>
+    <Texture>herp_derp.jpg</Texture>
+    <Position x="10" y="20" z="30"/>
+  </VisualComponent>
+</Actor>

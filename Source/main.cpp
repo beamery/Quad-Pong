@@ -8,6 +8,10 @@
 #include <iostream>
 #include "GameState.h"
 
+// TESTING TINYXML
+#include "tinyxml2.h"
+void TestXml();
+
 using namespace std;
 
 bool handleEvent(sf::Event event);
@@ -37,6 +41,10 @@ int main()
     bool Running = true;
 
 	double elapsedTime = 0;
+
+	//TINYXML TESTING
+	TestXml();
+
     while (Running)
     {
 		// Get new elapsed time
@@ -122,5 +130,36 @@ bool handleEvent(sf::Event event)
 		glViewport(0, 0, event.size.width, event.size.height);
 	}
 	return true;
+}
+
+
+void TestXml()
+{
+	static const char* xml = 
+        "<?xml version=\"1.0\"?>"
+        "<!DOCTYPE PLAY SYSTEM \"play.dtd\">"
+        "<PLAY>"
+        "<TITLE>A Midsummer Night's Dream</TITLE>"
+        "</PLAY>";
+
+	tinyxml2::XMLDocument doc;
+	if (doc.LoadFile("test.xml") != tinyxml2::XML_NO_ERROR)
+	{
+		cout << "Error" << endl;
+	}
+	else
+	{
+		tinyxml2::XMLElement *visual = doc.FirstChildElement("Actor")->FirstChildElement("VisualComponent");
+		tinyxml2::XMLElement *texture = visual->FirstChildElement("Texture");
+		const char *tText = texture->GetText();
+
+		tinyxml2::XMLElement *pos = visual->FirstChildElement("Position");
+		int x = pos->IntAttribute("x");
+		int y = pos->IntAttribute("y");
+		int z = pos->IntAttribute("z");
+
+		cout << "Texture: " << tText << endl;
+		cout << "Position: (" << x << ", " << y << ", " << z << ")" << endl;
+	}
 }
 

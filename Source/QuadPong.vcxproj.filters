@@ -20,6 +20,12 @@
     <Filter Include="Source Files\Actors">
       <UniqueIdentifier>{061335c2-ad07-409f-8f77-0a877a489aec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TinyXml">
+      <UniqueIdentifier>{aca7f8bd-8948-446b-82c2-f03502773331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actors\ActorTypes">
+      <UniqueIdentifier>{9bf4f231-0e44-4402-9f1e-f969115ec661}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -46,6 +52,12 @@
     <ClCompile Include="StateManager.cpp">
       <Filter>Source Files\GameState</Filter>
     </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Source Files\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorFactory.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -60,13 +72,18 @@
     <ClInclude Include="Actor.h">
       <Filter>Source Files\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="ActorComponent.h">
-      <Filter>Source Files\Actors</Filter>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Source Files\TinyXml</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="notes.txt">
       <Filter>Source Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="test.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
