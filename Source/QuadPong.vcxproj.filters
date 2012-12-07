@@ -26,6 +26,9 @@
     <Filter Include="Source Files\Actors\ActorTypes">
       <UniqueIdentifier>{9bf4f231-0e44-4402-9f1e-f969115ec661}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Actors\ComponentTypes">
+      <UniqueIdentifier>{6123cb5e-cbbb-4923-b42c-a45ff242f98e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -57,6 +60,15 @@
     </ClCompile>
     <ClCompile Include="ActorFactory.cpp">
       <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualComponent.cpp">
+      <Filter>Source Files\Actors\ComponentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="TestComponents.cpp">
+      <Filter>Source Files\Actors\ComponentTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

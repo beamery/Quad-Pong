@@ -11,6 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="TestComponents.cpp" />
+    <ClCompile Include="VisualComponent.cpp" />
     <ClCompile Include="ActorFactory.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="EventManager.cpp" />

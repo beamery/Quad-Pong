@@ -7,10 +7,12 @@
 #include <SFML/OpenGL.hpp>
 #include <iostream>
 #include "GameState.h"
+#include "Actor.h"
 
-// TESTING TINYXML
+// TESTING
 #include "tinyxml2.h"
 void TestXml();
+void testActors();
 
 using namespace std;
 
@@ -162,4 +164,10 @@ void TestXml()
 		cout << "Position: (" << x << ", " << y << ", " << z << ")" << endl;
 	}
 }
+
+void testActors()
+{
+	Actor *actors = new Actor[10];
+}
+
 

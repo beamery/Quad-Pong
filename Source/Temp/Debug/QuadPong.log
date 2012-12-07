@@ -1,17 +1,39 @@
-﻿Build started 12/3/2012 12:01:24 AM.
+﻿Build started 12/6/2012 11:32:18 PM.
      1>Project "D:\My Documents\Github\Quad-Pong\Source\QuadPong.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\\" /Fd"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ActorFactory.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\\" /Fd"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Actor.cpp ActorFactory.cpp TestComponents.cpp VisualComponent.cpp main.cpp
+         Actor.cpp
+     1>d:\my documents\github\quad-pong\source\actor.h(33): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.h(35): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.cpp(3): warning C4100: 'xmlData' : unreferenced formal parameter
+         Generating Code...
+         Compiling...
+         main.cpp
+     1>d:\my documents\github\quad-pong\source\actor.h(33): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.h(35): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\main.cpp(96): warning C4189: 'eventManager' : local variable is initialized but not referenced
+     1>d:\my documents\github\quad-pong\source\main.cpp(170): warning C4189: 'actors' : local variable is initialized but not referenced
+         VisualComponent.cpp
+     1>d:\my documents\github\quad-pong\source\actor.h(33): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.h(35): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\visualcomponent.cpp(8): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\visualcomponent.cpp(18): warning C4100: 'elapsedTime' : unreferenced formal parameter
+         TestComponents.cpp
+     1>d:\my documents\github\quad-pong\source\actor.h(33): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.h(35): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\testcomponents.cpp(3): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\testcomponents.cpp(13): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\testcomponents.cpp(21): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\testcomponents.cpp(31): warning C4100: 'elapsedTime' : unreferenced formal parameter
          ActorFactory.cpp
-     1>d:\my documents\github\quad-pong\source\actor.h(30): warning C4100: 'xmlData' : unreferenced formal parameter
-     1>d:\my documents\github\quad-pong\source\actor.h(32): warning C4100: 'elapsedTime' : unreferenced formal parameter
-     1>d:\my documents\github\quad-pong\source\actor.h(42): warning C4100: 'xmlData' : unreferenced formal parameter
-     1>d:\my documents\github\quad-pong\source\actor.h(44): warning C4100: 'elapsedTime' : unreferenced formal parameter
-     1>d:\my documents\github\quad-pong\source\actor.h(59): warning C4100: 'xmlData' : unreferenced formal parameter
-     1>d:\my documents\github\quad-pong\source\actor.h(61): warning C4100: 'elapsedTime' : unreferenced formal parameter
-     1>d:\my documents\github\quad-pong\source\actor.h(65): warning C4100: 'component' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.h(33): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>d:\my documents\github\quad-pong\source\actor.h(35): warning C4100: 'elapsedTime' : unreferenced formal parameter
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.exe" /INCREMENTAL /NOLOGO "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" OpenGL32.lib GlU32.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.lib" /MACHINE:X86 "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\ActorFactory.obj"
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.exe" /INCREMENTAL /NOLOGO "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" OpenGL32.lib GlU32.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\My Documents\Github\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.lib" /MACHINE:X86 "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\Actor.obj"
+         "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\TestComponents.obj"
+         "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\VisualComponent.obj"
+         "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\ActorFactory.obj"
          "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\Error.obj"
          "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\EventManager.obj"
          "D:\My Documents\Github\Quad-Pong\Source\\..\Temp\Debug\GameOverState.obj"
@@ -26,4 +48,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.17
+Time Elapsed 00:00:04.33

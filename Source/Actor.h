@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include "tinyxml2.h"
+#include "Error.h"
 
 using namespace std;
 
@@ -12,12 +13,14 @@ typedef tinyxml2::XMLDocument XMLDoc;
 typedef tinyxml2::XMLAttribute XMLAttrib;
 
 
+
+
 //////////////////// ACTOR COMPONENT ////////////////////
 
 
 enum ComponentType
 {
-	BASE_COMPONENT, VISUAL,
+	BASE_COMPONENT, VISUAL, TEST1, TEST2
 };
 
 class ActorComponent
@@ -34,37 +37,59 @@ public:
 };
 
 
+class TestComponent1 : ActorComponent
+{
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double elapsedTime);
+	virtual ComponentType getComponentType() { return TEST1; }
+
+};
+class TestComponent2 : ActorComponent
+{
+	virtual ~TestComponent2();
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double elapsedTime);
+	virtual ComponentType getComponentType() { return TEST2; }
+};
+
+
+
 class VisualComponent : ActorComponent
 {
+public:
 	// METHOD STUBS
 	// TODO: override
-	virtual ~VisualComponent() {}
-	virtual void init(XMLElement *xmlData) {}
-	virtual void postInit() {}
-	virtual void update(double elapsedTime) {}
+	virtual ~VisualComponent();
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double elapsedTime);
 	virtual ComponentType getComponentType() { return VISUAL; }
 };
 
 
-//////////////////// ACTOR ////////////////////
 
-typedef ActorComponent *(*ComponentCreator)();
+//////////////////// ACTOR ////////////////////
 
 class Actor
 {
 	friend class ActorFactory;
 
 public:
-	virtual ~Actor() {}
-	virtual void init(XMLElement *xmlData) {}
-	virtual void postInit() {}
-	virtual void update(double elapsedTime) {}
-	virtual void destroy() {}
+	Actor() {};
+	virtual ~Actor() {};
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double elapsedTime);
+	virtual void destroy();
+	unsigned long getId() { return actorId; }
+	virtual ActorComponent * getComponent(ComponentType type);
 
 protected:
-	void addComponent(ActorComponent *component) {};
+	void addComponent(ActorComponent *component);
 
-	map<ComponentType, ActorComponent> components;
+	map<ComponentType, ActorComponent*> components;
 	unsigned long actorId;
 
 };
@@ -72,6 +97,7 @@ protected:
 
 //////////////////// ACTOR FACTORY ////////////////////
 
+typedef ActorComponent *(*ComponentCreator)();
 class ActorFactory
 {
 public:
@@ -86,7 +112,6 @@ private:
 
 	unsigned long getNextActorId() { lastActorId++; return lastActorId; }
 };
-
 
 
 #endif
