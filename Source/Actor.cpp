@@ -32,6 +32,18 @@ ActorComponent * Actor::getComponent(ComponentType type)
 		throw NO_SUCH_COMPONENT_ERR;
 }
 
+void Actor::print()
+{
+	cout << "Info for actor " << actorId << endl;
+	cout << "--------------------" << endl;
+	for (auto it = components.begin(); it != components.end(); it++)
+	{
+		((*it).second)->print();
+		cout << endl;
+	}
+}
+
+
 void Actor::addComponent(ActorComponent *component)
 {
 	if (components.count(component->getComponentType()) > 0)

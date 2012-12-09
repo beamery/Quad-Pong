@@ -1,8 +1,8 @@
 Work on testing Actor system
 
-- Implement TestComponents
-- Get XML files set up for test actor input
-- create some actors
-- manipulate them
+- Implement TestComponents - DONE
+- Get XML files set up for test actor input - DONE
+- create some actors - DONE
+- manipulate them - DONE
 - ???
 - profit

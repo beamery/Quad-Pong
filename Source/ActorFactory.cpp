@@ -5,10 +5,20 @@ ActorComponent * createVisualComponent()
 {
 	return (ActorComponent *)(new VisualComponent());
 }
+ActorComponent * createTestComponent1()
+{
+	return (ActorComponent *)(new TestComponent1());
+}
+ActorComponent * createTestComponent2()
+{
+	return (ActorComponent *)(new TestComponent2());
+}
 
 ActorFactory::ActorFactory() : lastActorId(0)
 {
 	componentCreatorMap["Visual"] = createVisualComponent;
+	componentCreatorMap["Test1"] = createTestComponent1;
+	componentCreatorMap["Test2"] = createTestComponent2;
 }
 
 
@@ -21,6 +31,7 @@ Actor * ActorFactory::createActor(const char *actorFilename)
 	Actor *actor = new Actor;
 	actor->init(actorData);
 	actor->actorId = getNextActorId();
+
 
 	// For each component of the actor
 	for (XMLElement *compData = actorData->FirstChildElement(); compData != NULL;
@@ -39,7 +50,7 @@ Actor * ActorFactory::createActor(const char *actorFilename)
 ActorComponent * ActorFactory::createActorComponent(XMLElement *xmlData)
 {
 	// Create and initialize this component with the given XML data.
-	string name = xmlData->GetText();
+	string name = xmlData->Name();
 	ActorComponent *component = componentCreatorMap[name]();
 	component->init(xmlData);
 

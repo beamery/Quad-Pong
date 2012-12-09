@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <iostream>
 #include "tinyxml2.h"
 #include "Error.h"
 
@@ -34,24 +35,44 @@ public:
 	virtual void postInit() {}
 	virtual void update(double elapsedTime) {}
 	virtual ComponentType getComponentType() { return BASE_COMPONENT; }
+	virtual void print() {}
 };
 
 
 class TestComponent1 : ActorComponent
 {
+public:
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double elapsedTime);
+	virtual void print();
 	virtual ComponentType getComponentType() { return TEST1; }
+
+private:
+	string name;
+	double x, y;
+	double speed;
+	
+private:
 
 };
 class TestComponent2 : ActorComponent
 {
-	virtual ~TestComponent2();
+public:
+
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double elapsedTime);
+	virtual void print();
 	virtual ComponentType getComponentType() { return TEST2; }
+
+	void getColor(float &rc, float &gc, float &bc);
+
+private:
+	string texture;
+	float r, g, b, a;
+	bool rP, gP, bP;
+	
 };
 
 
@@ -85,6 +106,7 @@ public:
 	virtual void destroy();
 	unsigned long getId() { return actorId; }
 	virtual ActorComponent * getComponent(ComponentType type);
+	virtual void print();
 
 protected:
 	void addComponent(ActorComponent *component);

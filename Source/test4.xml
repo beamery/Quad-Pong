@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Test2>
+    <Texture>Schramm.jpg</Texture>
+    <Color r="0" g="10" b="73" a="18" />
+  </Test2>
+  <Test1>
+    <Speed>40.1</Speed>
+    <Position x="127.1" y="128.01" />
+    <Name>Brandon</Name>
+  </Test1>
+</Actor>

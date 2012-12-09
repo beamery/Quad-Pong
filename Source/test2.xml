@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Test2>
+    <Texture>kitten.jpg</Texture>
+    <Color r="10" g="33" b="102" a="255" />
+  </Test2>
+</Actor>

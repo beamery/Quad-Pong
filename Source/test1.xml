@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Test1>
+    <Name>Brian</Name>
+    <Speed>15.6</Speed>
+    <Position x="12.6" y="14.4" />
+  </Test1>
+</Actor>

@@ -11,7 +11,7 @@
 
 // TESTING
 #include "tinyxml2.h"
-void TestXml();
+void testXml();
 void testActors();
 
 using namespace std;
@@ -44,8 +44,13 @@ int main()
 
 	double elapsedTime = 0;
 
-	//TINYXML TESTING
-	TestXml();
+	// TESTING CALLS
+	testXml();
+	testActors();
+
+	ActorFactory *af = new ActorFactory();
+	Actor *background = af->createActor("test2.xml");
+	// END TESTING
 
     while (Running)
     {
@@ -69,15 +74,18 @@ int main()
 
 
 		// RENDERING CODE FOR TESTING, REMOVE LATER
+		float r, g, b;
+		background->update(elapsedTime);
+		((TestComponent2*)background->getComponent(TEST2))->getColor(r, g, b);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glBegin(GL_TRIANGLES);
 		{
-			glColor3f(0.2f, 0.2f, 0.8f);
+			glColor3f(r, g, b);
 			glVertex2f(-0.25f, -0.25f);
-			glColor3f(0.8f, 0.2f, 0.2f);
+			glColor3f(b, g, r);
 			glVertex2f(0.25f, -0.25f);
-			glColor3f(0.2f, 0.8f, 0.2f);
+			glColor3f(g, r, b);
 			glVertex2f(0.0f, 0.25f);
 		}
 		glEnd();
@@ -135,7 +143,7 @@ bool handleEvent(sf::Event event)
 }
 
 
-void TestXml()
+void testXml()
 {
 	static const char* xml = 
         "<?xml version=\"1.0\"?>"
@@ -161,13 +169,22 @@ void TestXml()
 		int z = pos->IntAttribute("z");
 
 		cout << "Texture: " << tText << endl;
-		cout << "Position: (" << x << ", " << y << ", " << z << ")" << endl;
+		cout << "Position: (" << x << ", " << y << ", " << z << ")" << endl << endl;
 	}
 }
 
 void testActors()
 {
-	Actor *actors = new Actor[10];
+	ActorFactory *af = new ActorFactory();
+	Actor *a1 = af->createActor("test1.xml");
+	Actor *a2 = af->createActor("test2.xml");
+	Actor *a3 = af->createActor("test3.xml");
+	Actor *a4 = af->createActor("test4.xml");
+
+	a1->print();
+	a2->print();
+	a3->print();
+	a4->print();
 }
 
 
