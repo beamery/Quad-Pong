@@ -1,8 +1,4 @@
-Work on testing Actor system
-
-- Implement TestComponents - DONE
-- Get XML files set up for test actor input - DONE
-- create some actors - DONE
-- manipulate them - DONE
-- ???
-- profit
+Currently working on the human view
+- Specifically, just started on the input handling system
+	- Events passed in from main to human view based on event type
+	- human view has its will with the events

@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include "Event.h"
+#include "Views.h"
 
 using namespace std;
 
@@ -11,14 +12,18 @@ class IGameState
 {
 public:
 	virtual void init() = 0;
-	virtual void update(double elapsedTime) = 0;
+	virtual void update(double totalTime, double elapsedTime) = 0;
+	HumanView * getHumanView() { return humanView; }
+
+protected:
+	HumanView *humanView;
 };
 
 class MainMenuState : public IGameState
 {
 public:
 	virtual void init();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 private:
 	double timer;
 };
@@ -27,7 +32,7 @@ class InnerGameState : public IGameState
 {
 public:
 	virtual void init();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 private:
 	double timer;
 };
@@ -36,7 +41,7 @@ class GameOverState : public IGameState
 {
 public:
 	virtual void init();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 private:
 	double timer;
 };

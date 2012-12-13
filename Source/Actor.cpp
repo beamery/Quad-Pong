@@ -10,12 +10,12 @@ void Actor::postInit()
 
 }
 
-void Actor::update(double elapsedTime)
+void Actor::update(double totalTime, double elapsedTime)
 {
 	// update all components
 	for (auto it = components.begin(); it != components.end(); it++)
 	{
-		((*it).second)->update(elapsedTime);
+		((*it).second)->update(totalTime, elapsedTime);
 	}
 }
 

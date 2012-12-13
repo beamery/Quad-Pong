@@ -15,7 +15,7 @@ void VisualComponent::postInit()
 
 }
 
-void VisualComponent::update(double elapsedTime)
+void VisualComponent::update(double totalTime, double elapsedTime)
 {
 
 }

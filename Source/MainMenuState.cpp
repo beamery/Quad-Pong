@@ -7,9 +7,10 @@
 void MainMenuState::init()
 {
 	timer = 0;
+	humanView = new HumanView();
 }
 
-void MainMenuState::update(double elapsedTime)
+void MainMenuState::update(double totalTime, double elapsedTime)
 {
 	glClearColor(0.2f, 0.4f, 0.2f, 1.0f);
 

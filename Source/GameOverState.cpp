@@ -7,9 +7,10 @@
 void GameOverState::init()
 {
 	timer = 0;
+	humanView = new HumanView();
 }
 
-void GameOverState::update(double elapsedTime)
+void GameOverState::update(double totalTime, double elapsedTime)
 {
 	glClearColor(0.4f, 0.2f, 0.2f, 1.0f);
 	

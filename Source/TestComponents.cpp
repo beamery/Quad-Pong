@@ -13,7 +13,7 @@ void TestComponent1::postInit()
 	name = name + "Test";
 }
 
-void TestComponent1::update(double elapsedTime) 
+void TestComponent1::update(double totalTime, double elapsedTime) 
 {
 	x += speed * elapsedTime;
 	y += speed * elapsedTime;
@@ -43,7 +43,7 @@ void TestComponent2::postInit()
 	texture = texture + ".tex";
 }
 
-void TestComponent2::update(double elapsedTime) 
+void TestComponent2::update(double totalTime, double elapsedTime) 
 {
 	int rInc = rand() % 3;
 	int gInc = rand() % 3;

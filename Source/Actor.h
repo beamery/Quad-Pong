@@ -33,7 +33,7 @@ public:
 	virtual ~ActorComponent() {}
 	virtual void init(XMLElement *xmlData) {}
 	virtual void postInit() {}
-	virtual void update(double elapsedTime) {}
+	virtual void update(double totalTime, double elapsedTime) {}
 	virtual ComponentType getComponentType() { return BASE_COMPONENT; }
 	virtual void print() {}
 };
@@ -44,7 +44,7 @@ class TestComponent1 : ActorComponent
 public:
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 	virtual void print();
 	virtual ComponentType getComponentType() { return TEST1; }
 
@@ -62,7 +62,7 @@ public:
 
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 	virtual void print();
 	virtual ComponentType getComponentType() { return TEST2; }
 
@@ -85,7 +85,7 @@ public:
 	virtual ~VisualComponent();
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 	virtual ComponentType getComponentType() { return VISUAL; }
 };
 
@@ -102,7 +102,7 @@ public:
 	virtual ~Actor() {};
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
-	virtual void update(double elapsedTime);
+	virtual void update(double totalTime, double elapsedTime);
 	virtual void destroy();
 	unsigned long getId() { return actorId; }
 	virtual ActorComponent * getComponent(ComponentType type);

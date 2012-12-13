@@ -33,7 +33,9 @@ int main()
 	settings.majorVersion = 3;
 	settings.minorVersion = 3;
 	sf::Window window(sf::VideoMode(800, 600, 32), "Quad Pong", sf::Style::Default, settings);
+	window.setKeyRepeatEnabled(false);
 	sf::Clock clock;
+	sf::Clock totalClock;
 
 	// Initialize game data
 	initEventManager();
@@ -43,6 +45,7 @@ int main()
     bool Running = true;
 
 	double elapsedTime = 0;
+	double totalTime = 0;
 
 	// TESTING CALLS
 	testXml();
@@ -54,28 +57,50 @@ int main()
 
     while (Running)
     {
-		// Get new elapsed time
+		// Get new elapsed time and total time
 		elapsedTime = clock.getElapsedTime().asSeconds();
 		clock.restart();
+		totalTime = clock.getElapsedTime().asSeconds();
 
 
 		// Handle system events
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			Running = handleEvent(event);
+			Running = handleEvent(event); // STUB CODE, REMOVE LATER
+
+			HumanView *v = StateManager::get()->getCurrentState()->getHumanView();
+
+			// Have the human view handle input events
+			switch(event.type)
+			{
+			case sf::Event::EventType::KeyPressed:
+				v->keyboardHandler->onKeyDown(event); break;
+			case sf::Event::EventType::KeyReleased:
+				v->keyboardHandler->onKeyUp(event); break;
+			case sf::Event::EventType::MouseButtonPressed:
+				v->pointerHandler->onPointerButtonDown(event); break;
+			case sf::Event::EventType::MouseButtonReleased:
+				v->pointerHandler->onPointerButtonUp(event); break;
+			case sf::Event::EventType::MouseWheelMoved:
+				v->pointerHandler->onWheelMove(event); break;
+			case sf::Event::EventType::MouseMoved:
+				v->pointerHandler->onPointerMove(event, window); break;
+			default:
+				Running = handleEvent(event);
+			}
 		}
 
 		// Handle game events
 		EventManager::get()->update();	
 
 		// Update game state
-		StateManager::get()->getCurrentState()->update(elapsedTime);
+		StateManager::get()->getCurrentState()->update(totalTime, elapsedTime);
 
 
 		// RENDERING CODE FOR TESTING, REMOVE LATER
 		float r, g, b;
-		background->update(elapsedTime);
+		background->update(totalTime, elapsedTime);
 		((TestComponent2*)background->getComponent(TEST2))->getColor(r, g, b);
 		glClear(GL_COLOR_BUFFER_BIT);
 

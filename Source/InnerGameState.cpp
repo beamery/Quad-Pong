@@ -7,9 +7,10 @@
 void InnerGameState::init()
 {
 	timer = 0;
+	humanView = new HumanView();
 }
 
-void InnerGameState::update(double elapsedTime)
+void InnerGameState::update(double totalTime, double elapsedTime)
 {
 	glClearColor(0.2f, 0.2f, 0.4f, 1.0f);
 

@@ -12,6 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="HumanView.cpp" />
+    <ClCompile Include="KeyboardHandler.cpp" />
+    <ClCompile Include="PointerHandler.cpp" />
     <ClCompile Include="TestComponents.cpp" />
     <ClCompile Include="VisualComponent.cpp" />
     <ClCompile Include="ActorFactory.cpp" />
@@ -30,14 +33,18 @@
     <ClInclude Include="Error.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="Views.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="test.xml" />
-    <Xml Include="test1.xml" />
+    <Xml Include="test1.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="test2.xml" />
     <Xml Include="test3.xml" />
     <Xml Include="test4.xml" />
