@@ -19,7 +19,7 @@ public:
 class HumanView : View
 {
 public:
-	HumanView();
+	HumanView(Actor * a = 0);
 	virtual void update(double totalTime, double elapsedTime);
 
 	// input handling

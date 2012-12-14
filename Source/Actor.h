@@ -16,20 +16,21 @@ typedef tinyxml2::XMLAttribute XMLAttrib;
 
 
 
+class Actor;
 //////////////////// ACTOR COMPONENT ////////////////////
-
 
 enum ComponentType
 {
-	BASE_COMPONENT, VISUAL, TEST1, TEST2
+	BASE_COMPONENT, VISUAL, PHYSICAL, TEST1, TEST2
 };
 
 class ActorComponent
 {
 	friend class ActorFactory;
 
-
 public:
+	Actor *parent;
+
 	virtual ~ActorComponent() {}
 	virtual void init(XMLElement *xmlData) {}
 	virtual void postInit() {}
@@ -87,6 +88,16 @@ public:
 	virtual void postInit();
 	virtual void update(double totalTime, double elapsedTime);
 	virtual ComponentType getComponentType() { return VISUAL; }
+};
+
+class PhysicalComponent : ActorComponent
+{
+public:
+	virtual ~PhysicalComponent();
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double totalTime, double elapsedTime);
+	virtual ComponentType getComponentType() { return PHYSICAL; }
 };
 
 

@@ -1,6 +1,7 @@
 #include "Views.h"
 
-HumanView::HumanView() : 
+HumanView::HumanView(Actor *a) : 
+	actor(a),
 	keyboardHandler(new KeyboardHandler()), 
 	pointerHandler(new PointerHandler())
 {

@@ -37,10 +37,11 @@ Actor * ActorFactory::createActor(const char *actorFilename)
 	for (XMLElement *compData = actorData->FirstChildElement(); compData != NULL;
 			compData = compData->NextSiblingElement())
 	{
-		// Create the component and set its owner to the actor
+		// Create the component and set its parent to the actor
 		ActorComponent *comp = createActorComponent(compData);
 		comp->postInit();
 		actor->addComponent(comp);
+		comp->parent = actor;
 	}
 
 	actor->postInit();

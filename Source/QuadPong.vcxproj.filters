@@ -35,6 +35,9 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{403d9897-010f-4212-b60c-66205b40f1f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{e4e145a1-0202-494d-bd8b-709b1eea63d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -85,6 +88,9 @@
     <ClCompile Include="HumanView.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="Tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -107,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

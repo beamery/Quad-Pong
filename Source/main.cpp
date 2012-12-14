@@ -8,11 +8,7 @@
 #include <iostream>
 #include "GameState.h"
 #include "Actor.h"
-
-// TESTING
-#include "tinyxml2.h"
-void testXml();
-void testActors();
+#include "Tests.h"
 
 using namespace std;
 
@@ -50,6 +46,7 @@ int main()
 	// TESTING CALLS
 	testXml();
 	testActors();
+	testVectors();
 
 	ActorFactory *af = new ActorFactory();
 	Actor *background = af->createActor("test2.xml");
@@ -166,50 +163,4 @@ bool handleEvent(sf::Event event)
 	}
 	return true;
 }
-
-
-void testXml()
-{
-	static const char* xml = 
-        "<?xml version=\"1.0\"?>"
-        "<!DOCTYPE PLAY SYSTEM \"play.dtd\">"
-        "<PLAY>"
-        "<TITLE>A Midsummer Night's Dream</TITLE>"
-        "</PLAY>";
-
-	tinyxml2::XMLDocument doc;
-	if (doc.LoadFile("test.xml") != tinyxml2::XML_NO_ERROR)
-	{
-		cout << "Error" << endl;
-	}
-	else
-	{
-		tinyxml2::XMLElement *visual = doc.FirstChildElement("Actor")->FirstChildElement("VisualComponent");
-		tinyxml2::XMLElement *texture = visual->FirstChildElement("Texture");
-		const char *tText = texture->GetText();
-
-		tinyxml2::XMLElement *pos = visual->FirstChildElement("Position");
-		int x = pos->IntAttribute("x");
-		int y = pos->IntAttribute("y");
-		int z = pos->IntAttribute("z");
-
-		cout << "Texture: " << tText << endl;
-		cout << "Position: (" << x << ", " << y << ", " << z << ")" << endl << endl;
-	}
-}
-
-void testActors()
-{
-	ActorFactory *af = new ActorFactory();
-	Actor *a1 = af->createActor("test1.xml");
-	Actor *a2 = af->createActor("test2.xml");
-	Actor *a3 = af->createActor("test3.xml");
-	Actor *a4 = af->createActor("test4.xml");
-
-	a1->print();
-	a2->print();
-	a3->print();
-	a4->print();
-}
-
 
