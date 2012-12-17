@@ -13,6 +13,7 @@
 using namespace std;
 
 bool handleEvent(sf::Event event);
+void initGL(int width, int height);
 void initEventManager();
 void initGameState();
 
@@ -34,6 +35,7 @@ int main()
 	sf::Clock totalClock;
 
 	// Initialize game data
+	initGL(window.getSize().x, window.getSize().y);
 	initEventManager();
 	initGameState();
 
@@ -104,18 +106,38 @@ int main()
 		glBegin(GL_TRIANGLES);
 		{
 			glColor3f(r, g, b);
-			glVertex2f(-0.25f, -0.25f);
+			glVertex2f(350, 350);
 			glColor3f(b, g, r);
-			glVertex2f(0.25f, -0.25f);
+			glVertex2f(450, 350);
 			glColor3f(g, r, b);
-			glVertex2f(0.0f, 0.25f);
+			glVertex2f(400, 250);
 		}
 		glEnd();
+
+		drawCircle(Mouse::getPosition(window).x, Mouse::getPosition(window).y, 100, 360);
 
 		window.display();
     }
 	
     return EXIT_SUCCESS;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Initialize our OpenGL context for this window, called once at startup.
+////////////////////////////////////////////////////////////////////////////////
+void initGL(int width, int height)
+{
+    //Set the viewport
+	glViewport(0, 0, width, height);
+
+    //Initialize Projection Matrix
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    glOrtho(0, width, height, 0, 1, -1);
+
+    //Initialize Modelview Matrix
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

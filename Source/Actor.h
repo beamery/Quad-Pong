@@ -3,9 +3,11 @@
 
 #include <map>
 #include <string>
+#include <vector>
 #include <iostream>
 #include "tinyxml2.h"
 #include "Error.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -93,13 +95,23 @@ public:
 class PhysicalComponent : ActorComponent
 {
 public:
+	Vec2D<double> pos;
+	vector< Vec2D<double> > forces;
+	vector< Vec2D<double> > impulses;
+
 	virtual ~PhysicalComponent();
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double totalTime, double elapsedTime);
 	virtual ComponentType getComponentType() { return PHYSICAL; }
+
+private:
 };
 
+class CircleComponent : PhysicalComponent
+{
+
+};
 
 
 //////////////////// ACTOR ////////////////////

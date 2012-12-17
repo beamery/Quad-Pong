@@ -114,17 +114,12 @@
     <ClInclude Include="Input.h">
       <Filter>Source Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Tests.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="notes.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    <ClInclude Include="Utils.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="test1.xml">
@@ -142,5 +137,10 @@
     <Xml Include="test4.xml">
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="notes.md">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

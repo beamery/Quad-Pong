@@ -1,7 +1,0 @@
-Currently working on the human view
-- Specifically, just started on the input handling system
-	- Events passed in from main to human view based on event type
-	- human view has its will with the events
-
-Next task:
-- Transform raw input events into game events
