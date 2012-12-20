@@ -23,7 +23,8 @@ class Actor;
 
 enum ComponentType
 {
-	BASE_COMPONENT, VISUAL, PHYSICAL, TEST1, TEST2
+	BASE_COMPONENT, VISUAL, PHYSICAL, TEST1, TEST2,
+	CIRCLE, RECTANGLE,
 };
 
 class ActorComponent
@@ -78,8 +79,6 @@ private:
 	
 };
 
-
-
 class VisualComponent : ActorComponent
 {
 public:
@@ -110,8 +109,26 @@ private:
 
 class CircleComponent : PhysicalComponent
 {
+public:
+	double radius;
 
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double totalTime, double elapsedTime);
+	virtual ComponentType getComponentType() { return CIRCLE; }
 };
+
+class RectangleComponent : PhysicalComponent
+{
+public:
+	double width, height;
+
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double totalTime, double elapsedTime);
+	virtual ComponentType getComponentType() { return RECTANGLE; }
+};
+
 
 
 //////////////////// ACTOR ////////////////////
