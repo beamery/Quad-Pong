@@ -20,6 +20,14 @@ void Error::print(Status status)
 		cerr << "no such component exists"; break;
 	case DUPLICATE_COMPONENT_ERR:
 		cerr << "actor already has that component"; break;
+	case OBJ_NOT_MOVABLE:
+		cerr << "tried to move an immovable object"; break;
+	case BAD_SHAPE_ERR:
+		cerr << "invalid shape"; break;
+	case MULTIPLE_SHAPE_ERR:
+		cerr << "component assigned more than one shape"; break;
+	case NULL_SHAPE_ERR:
+		cerr << "component was not assigned a shape"; break;
 
 	default:	
 		cerr << "undefined error code: " << status;

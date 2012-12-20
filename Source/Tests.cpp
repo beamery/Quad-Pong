@@ -1,14 +1,8 @@
 #include "Tests.h"
+#include "Error.h"
 
 void testXml()
 {
-	static const char* xml = 
-        "<?xml version=\"1.0\"?>"
-        "<!DOCTYPE PLAY SYSTEM \"play.dtd\">"
-        "<PLAY>"
-        "<TITLE>A Midsummer Night's Dream</TITLE>"
-        "</PLAY>";
-
 	tinyxml2::XMLDocument doc;
 	if (doc.LoadFile("test.xml") != tinyxml2::XML_NO_ERROR)
 	{
@@ -25,6 +19,9 @@ void testXml()
 		int y = pos->IntAttribute("y");
 		int z = pos->IntAttribute("z");
 
+		tinyxml2::XMLElement *nothing = visual->FirstChildElement("Nothing");
+		cout << "pointer to nothing is null: " << boolalpha << (nothing == nullptr) << endl;
+
 		cout << "Texture: " << tText << endl;
 		cout << "Position: (" << x << ", " << y << ", " << z << ")" << endl << endl;
 	}
@@ -33,15 +30,18 @@ void testXml()
 void testActors()
 {
 	ActorFactory *af = new ActorFactory();
-	Actor *a1 = af->createActor("test1.xml");
-	Actor *a2 = af->createActor("test2.xml");
-	Actor *a3 = af->createActor("test3.xml");
-	Actor *a4 = af->createActor("test4.xml");
+	try 
+	{
+		Actor *phys = af->createActor("TestPhysical.xml");
+		phys->print();
+	} 
+	catch(Status e)
+	{
+		Error::print(e);
+	}
 
-	a1->print();
-	a2->print();
-	a3->print();
-	a4->print();
+
+
 }
 
 void testVectors()

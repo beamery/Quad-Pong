@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Physical>
+    <Movable value="false" />
+    <Position x="33" y="54.1237" />
+
+    <!-- <Circle radius="12.2" /> -->
+
+    <Rect w="22" h="44.53" />
+  </Physical>
+
+</Actor>

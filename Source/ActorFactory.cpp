@@ -13,10 +13,16 @@ ActorComponent * createTestComponent2()
 {
 	return (ActorComponent *)(new TestComponent2());
 }
+ActorComponent * createPhysicalComponent()
+{
+	return (ActorComponent *)(new PhysicalComponent());
+}
+
 
 ActorFactory::ActorFactory() : lastActorId(0)
 {
 	componentCreatorMap["Visual"] = createVisualComponent;
+	componentCreatorMap["Physical"] = createPhysicalComponent;
 	componentCreatorMap["Test1"] = createTestComponent1;
 	componentCreatorMap["Test2"] = createTestComponent2;
 }

@@ -5,9 +5,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
+
 #include "tinyxml2.h"
 #include "Error.h"
 #include "Utils.h"
+#include "Shape.h"
+#include "Error.h"
 
 using namespace std;
 
@@ -17,14 +20,12 @@ typedef tinyxml2::XMLAttribute XMLAttrib;
 
 
 
-
 class Actor;
 //////////////////// ACTOR COMPONENT ////////////////////
 
 enum ComponentType
 {
 	BASE_COMPONENT, VISUAL, PHYSICAL, TEST1, TEST2,
-	CIRCLE, RECTANGLE,
 };
 
 class ActorComponent
@@ -94,9 +95,6 @@ public:
 class PhysicalComponent : ActorComponent
 {
 public:
-	Vec2D<double> pos;
-	vector< Vec2D<double> > forces;
-	vector< Vec2D<double> > impulses;
 
 	virtual ~PhysicalComponent();
 	virtual void init(XMLElement *xmlData);
@@ -104,31 +102,28 @@ public:
 	virtual void update(double totalTime, double elapsedTime);
 	virtual ComponentType getComponentType() { return PHYSICAL; }
 
+	bool isMovable() { return movable; }
+	Shape * getShape() { return shape; }
+	Vec2D<double> getPos() { return pos; }
+	Vec2D<double> getVelocity() { return vel; }
+	vector< Vec2D<double> > getForces() { return forces; }
+	vector< Vec2D<double> > getImpulses() { return impulses; }
+	void addImpulse(Vec2D<double> i) { impulses.push_back(i); }
+	void addForce(Vec2D<double> f) { forces.push_back(f); }
+	void setPos(double x, double y);
+	void removeForce(Vec2D<double> f);
+
+	void print();
+	
+
 private:
+	bool movable;
+	Shape *shape;
+	Vec2D<double> pos;
+	Vec2D<double> vel;
+	vector< Vec2D<double> > forces;
+	vector< Vec2D<double> > impulses;
 };
-
-class CircleComponent : PhysicalComponent
-{
-public:
-	double radius;
-
-	virtual void init(XMLElement *xmlData);
-	virtual void postInit();
-	virtual void update(double totalTime, double elapsedTime);
-	virtual ComponentType getComponentType() { return CIRCLE; }
-};
-
-class RectangleComponent : PhysicalComponent
-{
-public:
-	double width, height;
-
-	virtual void init(XMLElement *xmlData);
-	virtual void postInit();
-	virtual void update(double totalTime, double elapsedTime);
-	virtual ComponentType getComponentType() { return RECTANGLE; }
-};
-
 
 
 //////////////////// ACTOR ////////////////////
@@ -166,13 +161,13 @@ public:
 	ActorFactory();
 	~ActorFactory();
 	Actor * createActor(const char *actorFilename);
-	ActorComponent * createActorComponent(XMLElement *xmlData);
 
 private:
 	unsigned long lastActorId;
 	map<string, ComponentCreator> componentCreatorMap;
 
 	unsigned long getNextActorId() { lastActorId++; return lastActorId; }
+	ActorComponent * createActorComponent(XMLElement *xmlData);
 };
 
 

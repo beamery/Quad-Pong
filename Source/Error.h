@@ -14,14 +14,18 @@ enum Status
 	DUPLICATE_LISTENER_ERR,
 
 // Actor errors
-	NO_SUCH_COMPONENT_ERR, DUPLICATE_COMPONENT_ERR,
+	NO_SUCH_COMPONENT_ERR, DUPLICATE_COMPONENT_ERR, OBJ_NOT_MOVABLE,
+	MULTIPLE_SHAPE_ERR, NULL_SHAPE_ERR,
+
+// Shape errors
+	BAD_SHAPE_ERR,
 
 };
 
 class Error
 {
 public:
-	void print(Status status);
+	static void print(Status status);
 };
 
 #endif

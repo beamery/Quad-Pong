@@ -12,8 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="HumanView.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
+    <ClCompile Include="PhysicalComponent.cpp" />
     <ClCompile Include="PointerHandler.cpp" />
     <ClCompile Include="TestComponents.cpp" />
     <ClCompile Include="Tests.cpp" />
@@ -31,13 +33,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="Tests.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Vec2D.h" />
     <ClInclude Include="Views.h" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +56,7 @@
     <Xml Include="test2.xml" />
     <Xml Include="test3.xml" />
     <Xml Include="test4.xml" />
+    <Xml Include="TestPhysical.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{98C30B4B-15ED-4C8C-97DA-99E1B44A07BC}</ProjectGuid>
