@@ -28,6 +28,12 @@ void Error::print(Status status)
 		cerr << "component assigned more than one shape"; break;
 	case NULL_SHAPE_ERR:
 		cerr << "component was not assigned a shape"; break;
+	case INVALID_TEXTURE_ERR:
+		cerr << "that texture does not exist"; break;
+	case INVALID_TEXTURE_PATH:
+		cerr << "there is no texture at that path"; break;
+	case BAD_DIMENSION_ERR:
+		cerr << "no texture and no dimension given"; break;
 
 	default:	
 		cerr << "undefined error code: " << status;

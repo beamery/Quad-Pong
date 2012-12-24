@@ -35,6 +35,7 @@ public:
 	virtual void update(double totalTime, double elapsedTime);
 private:
 	double timer;
+	Actor *me;
 };
 
 class GameOverState : public IGameState

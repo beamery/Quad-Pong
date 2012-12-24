@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Physical>
+    <Position x="200" y="200" />
+    <Rect h="100" w="100" />
+  </Physical>
+  <Visual>
+    <Texture id="sprite_logo" />
+  </Visual>
+</Actor>

@@ -20,6 +20,11 @@ enum Status
 // Shape errors
 	BAD_SHAPE_ERR,
 
+// Texture errors
+	INVALID_TEXTURE_ERR, INVALID_TEXTURE_PATH,
+
+// Visual errors
+	BAD_DIMENSION_ERR,
 };
 
 class Error

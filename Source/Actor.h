@@ -11,6 +11,7 @@
 #include "Utils.h"
 #include "Shape.h"
 #include "Error.h"
+#include "Texture.h"
 
 using namespace std;
 
@@ -82,14 +83,27 @@ private:
 
 class VisualComponent : ActorComponent
 {
+	friend class HumanView;
+
 public:
-	// METHOD STUBS
-	// TODO: override
+	VisualComponent() {}
 	virtual ~VisualComponent();
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double totalTime, double elapsedTime);
 	virtual ComponentType getComponentType() { return VISUAL; }
+	bool isVisible() { return visible; }
+	void print();
+
+private:
+	bool visible;
+	bm::Texture *texture;
+	double width, height;
+	bm::Color colorData;
+
+	// TL, BL, TR, BR
+	vector< Vec2D<double> > vertexData;
+	vector< Vec2D<double> > textureData;
 };
 
 class PhysicalComponent : ActorComponent
@@ -103,7 +117,8 @@ public:
 	virtual ComponentType getComponentType() { return PHYSICAL; }
 
 	bool isMovable() { return movable; }
-	Shape * getShape() { return shape; }
+	bool canCollide() { return collidable; }
+	bm::Shape * getShape() { return shape; }
 	Vec2D<double> getPos() { return pos; }
 	Vec2D<double> getVelocity() { return vel; }
 	vector< Vec2D<double> > getForces() { return forces; }
@@ -118,7 +133,8 @@ public:
 
 private:
 	bool movable;
-	Shape *shape;
+	bool collidable;
+	bm::Shape *shape;
 	Vec2D<double> pos;
 	Vec2D<double> vel;
 	vector< Vec2D<double> > forces;
@@ -159,7 +175,7 @@ class ActorFactory
 {
 public:
 	ActorFactory();
-	~ActorFactory();
+	~ActorFactory() {}
 	Actor * createActor(const char *actorFilename);
 
 private:

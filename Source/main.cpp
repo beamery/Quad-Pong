@@ -16,6 +16,7 @@ bool handleEvent(sf::Event event);
 void initGL(int width, int height);
 void initEventManager();
 void initGameState();
+void initTextures();
 
 ////////////////////////////////////////////////////////////////////////////////
 // Main Entry point of application
@@ -38,6 +39,7 @@ int main()
 	initGL(window.getSize().x, window.getSize().y);
 	initEventManager();
 	initGameState();
+	initTextures();
 
     // Start main loop
     bool Running = true;
@@ -94,27 +96,13 @@ int main()
 		EventManager::get()->update();	
 
 		// Update game state
+		glClear(GL_COLOR_BUFFER_BIT);
 		StateManager::get()->getCurrentState()->update(totalTime, elapsedTime);
 
-
 		// RENDERING CODE FOR TESTING, REMOVE LATER
-		float r, g, b;
-		background->update(totalTime, elapsedTime);
-		((TestComponent2*)background->getComponent(TEST2))->getColor(r, g, b);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBegin(GL_TRIANGLES);
-		{
-			glColor3f(r, g, b);
-			glVertex2f(350, 350);
-			glColor3f(b, g, r);
-			glVertex2f(450, 350);
-			glColor3f(g, r, b);
-			glVertex2f(400, 250);
-		}
-		glEnd();
-
-		drawCircle(Mouse::getPosition(window).x, Mouse::getPosition(window).y, 100, 360);
+		//drawSprite();
+		//drawTriangle(background, totalTime, elapsedTime);
+		//drawCircle(Mouse::getPosition(window).x, Mouse::getPosition(window).y, 70, 360);
 
 		window.display();
     }
@@ -168,6 +156,17 @@ void initGameState()
 
 	StateManager::get()->changeState("main_menu");
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Initialize our texture manager, called once at program startup
+////////////////////////////////////////////////////////////////////////////////
+void initTextures()
+{
+	TextureManager *textureManager = new TextureManager(true);
+
+	TextureManager::get()->loadTexture("../Assets/SpriteLogo.jpg", "sprite_logo");
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Handle system events, called each frame.

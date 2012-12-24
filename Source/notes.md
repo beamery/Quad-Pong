@@ -6,8 +6,8 @@ Currently working on the human view
 
 Next Tasks
 ----------
+- Test collisions between objects
 - Transform raw input events into game events
-- Design physical components and their collisions (circle and rectangle mainly)
 
 Design of Sphere and rectangle components:
 ------------------------------------------

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Visual>
+    <Visible value="true" />
+    <!--Texture id="sprite" /-->
+    <Dimensions w="100" h="100" />
+    <Color r="0" g="255" b="254" a="253" />
+  </Visual>
+</Actor>

@@ -2,6 +2,10 @@
 
 bool Collision::collide(PhysicalComponent *c1, PhysicalComponent *c2)
 {
+	// if either object is not collidable, no collision occurs
+	if (!c1->canCollide() || !c2->canCollide())
+		return false;
+
 	// RECT-RECT collision
 	if (c1->getShape()->type == RECTANGLE && c2->getShape()->type == RECTANGLE)
 		return collide((Rect*)c1, c1->getPos(), (Rect*)c2, c2->getPos());

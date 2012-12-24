@@ -13,9 +13,14 @@ void PhysicalComponent::init(XMLElement *xmlData)
 	if (movableElt == nullptr)
 		movable = true;
 	else
-	{
 		movable = movableElt->BoolAttribute("value");
-	}
+
+	// Initialize collidable
+	XMLElement *collidableElt = xmlData->FirstChildElement("Collidable");
+	if (collidableElt == nullptr)
+		collidable = true;
+	else
+		collidable = collidableElt->BoolAttribute("value");
 
 	// Initialize shape
 	XMLElement *circleElt = xmlData->FirstChildElement("Circle");
@@ -33,7 +38,7 @@ void PhysicalComponent::init(XMLElement *xmlData)
 	{
 		double r = circleElt->DoubleAttribute("radius");
 		Circle *circ = new Circle(r);
-		shape = (Shape *)circ;
+		shape = (bm::Shape *)circ;
 	}
 	// Initialize rectangle
 	else
@@ -41,7 +46,7 @@ void PhysicalComponent::init(XMLElement *xmlData)
 		double w = rectElt->DoubleAttribute("w");
 		double h = rectElt->DoubleAttribute("h");
 		Rect *rect = new Rect(w, h);
-		shape = (Shape *)rect;
+		shape = (bm::Shape *)rect;
 	}
 
 	// Initialize position
@@ -50,24 +55,33 @@ void PhysicalComponent::init(XMLElement *xmlData)
 	pos.y = posElt->DoubleAttribute("y");
 }
 
-void PhysicalComponent::postInit() {}
+void PhysicalComponent::postInit() 
+{
+	forces.clear();
+	impulses.clear();
+	vel.x = 0;
+	vel.y = 0;
+}
 
 void PhysicalComponent::update(double totalTime, double elapsedTime) 
 {
-	// apply forces to the object
-	for (auto i = forces.begin(); i != forces.end(); i++)
+	if (movable)
 	{
-		vel = vel + ((*i) * elapsedTime);
+		// apply forces to the object
+		for (auto i = forces.begin(); i != forces.end(); i++)
+		{
+			vel = vel + ((*i) * elapsedTime);
+		}
+		// apply impulses to the object and then get rid of them
+		for (auto i = impulses.begin(); i != impulses.end(); i++)
+		{
+			vel = vel + ((*i) * elapsedTime);
+		}
+		impulses.clear();
+		
+		// update the position
+		pos = pos + vel;
 	}
-	// apply impulses to the object and then get rid of them
-	for (auto i = impulses.begin(); i != impulses.end(); i++)
-	{
-		vel = vel + ((*i) * elapsedTime);
-	}
-	impulses.clear();
-	
-	// update the position
-	pos = pos + vel;
 }
 
 void PhysicalComponent::setPos(double x, double y)

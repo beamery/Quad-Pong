@@ -41,6 +41,9 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{0e510879-47dc-42e6-baae-5f73fb7fe25e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{90513fd6-1347-4b3e-a15f-3a2b26d337a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -100,6 +103,9 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -138,6 +144,12 @@
     <ClInclude Include="Vec2D.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="test1.xml">
@@ -156,6 +168,12 @@
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
     <Xml Include="TestPhysical.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="TestVisual.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="TestPhysVis.xml">
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
   </ItemGroup>

@@ -19,6 +19,7 @@
     <ClCompile Include="PointerHandler.cpp" />
     <ClCompile Include="TestComponents.cpp" />
     <ClCompile Include="Tests.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="VisualComponent.cpp" />
     <ClCompile Include="ActorFactory.cpp" />
     <ClCompile Include="Error.cpp" />
@@ -34,12 +35,14 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Tests.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vec2D.h" />
@@ -57,6 +60,8 @@
     <Xml Include="test3.xml" />
     <Xml Include="test4.xml" />
     <Xml Include="TestPhysical.xml" />
+    <Xml Include="TestPhysVis.xml" />
+    <Xml Include="TestVisual.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{98C30B4B-15ED-4C8C-97DA-99E1B44A07BC}</ProjectGuid>
