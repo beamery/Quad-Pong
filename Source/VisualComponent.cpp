@@ -84,6 +84,14 @@ void VisualComponent::update(double totalTime, double elapsedTime)
 
 }
 
+void VisualComponent::setColor(int r, int g, int b, int a)
+{
+	colorData.r = r;
+	colorData.g = g;
+	colorData.b = b;
+	colorData.a = a;
+}
+
 void VisualComponent::print()
 {
 	cout << "visible: \t" << boolalpha << visible << endl;

@@ -5,9 +5,7 @@ HumanView::HumanView(Actor *a) :
 	actor(a),
 	keyboardHandler(new KeyboardHandler()), 
 	pointerHandler(new PointerHandler())
-{
-
-}
+{}
 
 void HumanView::update(double totalTime, double elapsedTime)
 {

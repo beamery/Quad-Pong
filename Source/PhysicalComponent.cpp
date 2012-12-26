@@ -1,5 +1,7 @@
 #include "Actor.h"
 
+using namespace bm;
+
 PhysicalComponent::~PhysicalComponent()
 {
 	delete shape;
@@ -36,7 +38,7 @@ void PhysicalComponent::init(XMLElement *xmlData)
 	// Initialize circle
 	else if (circleElt != nullptr) 
 	{
-		double r = circleElt->DoubleAttribute("radius");
+		double r = circleElt->DoubleAttribute("r");
 		Circle *circ = new Circle(r);
 		shape = (bm::Shape *)circ;
 	}
@@ -75,12 +77,12 @@ void PhysicalComponent::update(double totalTime, double elapsedTime)
 		// apply impulses to the object and then get rid of them
 		for (auto i = impulses.begin(); i != impulses.end(); i++)
 		{
-			vel = vel + ((*i) * elapsedTime);
+			vel = vel + (*i);
 		}
 		impulses.clear();
 		
 		// update the position
-		pos = pos + vel;
+		pos = pos + (vel * elapsedTime);
 	}
 }
 

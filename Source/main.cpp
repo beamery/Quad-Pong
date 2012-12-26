@@ -115,17 +115,21 @@ int main()
 ////////////////////////////////////////////////////////////////////////////////
 void initGL(int width, int height)
 {
-    //Set the viewport
+    // Set the viewport
 	glViewport(0, 0, width, height);
 
-    //Initialize Projection Matrix
+    // Initialize Projection Matrix
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
     glOrtho(0, width, height, 0, 1, -1);
 
-    //Initialize Modelview Matrix
+    // Initialize Modelview Matrix
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
+	// Enable alpha blendingkk
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -165,6 +169,7 @@ void initTextures()
 	TextureManager *textureManager = new TextureManager(true);
 
 	TextureManager::get()->loadTexture("../Assets/SpriteLogo.jpg", "sprite_logo");
+	TextureManager::get()->loadTexture("../Assets/Circle.png", "circle");
 }
 
 

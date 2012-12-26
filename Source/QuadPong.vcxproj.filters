@@ -44,6 +44,9 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{90513fd6-1347-4b3e-a15f-3a2b26d337a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Event\EventTypes">
+      <UniqueIdentifier>{9dab5536-0245-4990-badc-dc56dc5b3681}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,9 +65,6 @@
       <Filter>Source Files\Error</Filter>
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
-      <Filter>Source Files\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="Event.cpp">
       <Filter>Source Files\Event</Filter>
     </ClCompile>
     <ClCompile Include="StateManager.cpp">
@@ -105,6 +105,15 @@
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeGameState.cpp">
+      <Filter>Source Files\Event\EventTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source Files\Event\EventTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="MousePosition.cpp">
+      <Filter>Source Files\Event\EventTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +183,12 @@
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
     <Xml Include="TestPhysVis.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="Circle.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="Square.xml">
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
   </ItemGroup>

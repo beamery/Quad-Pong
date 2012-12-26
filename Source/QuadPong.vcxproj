@@ -12,9 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ChangeGameState.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="HumanView.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
+    <ClCompile Include="MousePosition.cpp" />
     <ClCompile Include="PhysicalComponent.cpp" />
     <ClCompile Include="PointerHandler.cpp" />
     <ClCompile Include="TestComponents.cpp" />
@@ -52,6 +54,8 @@
     <Text Include="notes.md" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Circle.xml" />
+    <Xml Include="Square.xml" />
     <Xml Include="test.xml" />
     <Xml Include="test1.xml">
       <SubType>Designer</SubType>

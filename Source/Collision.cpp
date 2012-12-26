@@ -1,5 +1,7 @@
 #include "Collision.h"
 
+using namespace bm;
+
 bool Collision::collide(PhysicalComponent *c1, PhysicalComponent *c2)
 {
 	// if either object is not collidable, no collision occurs
@@ -8,56 +10,42 @@ bool Collision::collide(PhysicalComponent *c1, PhysicalComponent *c2)
 
 	// RECT-RECT collision
 	if (c1->getShape()->type == RECTANGLE && c2->getShape()->type == RECTANGLE)
-		return collide((Rect*)c1, c1->getPos(), (Rect*)c2, c2->getPos());
+		return collide((Rect*)c1->getShape(), c1->getPos(), (Rect*)c2->getShape(), c2->getPos());
 
 	// CIRC-CIRC collision
 	else if (c1->getShape()->type == CIRCLE && c2->getShape()->type == CIRCLE)
-		return collide((Circle*)c1, c1->getPos(), (Circle*)c2, c2->getPos());
+		return collide((Circle*)c1->getShape(), c1->getPos(), (Circle*)c2->getShape(), c2->getPos());
 
 	// CIRC-RECT collision
 	else if (c1->getShape()->type == CIRCLE && c2->getShape()->type == RECTANGLE)
-		return collide((Rect*)c2, c2->getPos(), (Circle*)c1, c1->getPos());
+		return collide((Rect*)c2->getShape(), c2->getPos(), (Circle*)c1->getShape(), c1->getPos());
 
 	// RECT-CIRC collision
 	else if (c1->getShape()->type == RECTANGLE && c2->getShape()->type == CIRCLE)
-		return collide((Rect*)c1, c1->getPos(), (Circle*)c2, c2->getPos());
+		return collide((Rect*)c1->getShape(), c1->getPos(), (Circle*)c2->getShape(), c2->getPos());
 	else
 		throw BAD_SHAPE_ERR;
 }
 
 bool Collision::collide(Rect *r, Vec2D<double> rPos, Circle *c, Vec2D<double> cPos)
 {
-	// check collisions with corners of rect
-	double rLeft = rPos.x - (r->width / 2);
-	double rRight = rPos.x + (r->width / 2);
-	double rTop = rPos.y - (r->height / 2);
-	double rBottom = rPos.y + (r->height / 2);
-	Vec2D<double> rTopRight(rRight, rTop);
-	Vec2D<double> rTopLeft(rLeft, rTop);
-	Vec2D<double> rBottomRight(rRight, rBottom);
-	Vec2D<double> rBottomLeft(rLeft, rBottom);
+	double centerDistX = abs(cPos.x - rPos.x);
+	double centerDistY = abs(cPos.y - rPos.y);
 
-	// If the distance to any of the corners is smaller than the radius of the 
-	// circle, then the two shapes overlap
-	if ((cPos - rTopRight).length() <= c->radius) return true;
-	if ((cPos - rTopLeft).length() <= c->radius) return true;
-	if ((cPos - rBottomRight).length() <= c->radius) return true;
-	if ((cPos - rBottomLeft).length() <= c->radius) return true;
-	
-	// If we get here, then the circle does not intersect any of the corners
+	// rule out impossible collisions
+	if (centerDistX > (r->width / 2 + c->radius)) return false;
+	if (centerDistY > (r->height / 2 + c->radius)) return false;
 
-	double cLeft = cPos.x - c->radius;
-	double cRight = cPos.x + c->radius;
-	double cTop = cPos.y - c->radius;
-	double cBottom = cPos.y + c->radius;
+	// check collisions in 1D
+	if (centerDistX <= (r->width / 2)) { return true; } 
+    if (centerDistY <= (r->height / 2)) { return true; }
 
-	// Now check straight-line collisions
-	if (cBottom < rTop) return false;
-	if (cTop > rBottom) return false;
-	if (cLeft > rRight) return false;
-	if (cRight < rLeft) return false;
+	// check collisions with corner of rectangle
+	double cornerDistance_sq = 
+		(centerDistX - r->width / 2) * (centerDistX - r->width / 2) +
+		(centerDistY - r->height / 2) * (centerDistY - r->height / 2);
 
-	return true;
+	return (cornerDistance_sq <= (c->radius * c->radius));
 }
 
 bool Collision::collide(Rect *r1, Vec2D<double> r1Pos, Rect *r2, Vec2D<double> r2Pos)

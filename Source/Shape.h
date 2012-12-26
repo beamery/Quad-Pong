@@ -16,21 +16,20 @@ namespace bm
 		ShapeID type;
 		Shape(ShapeID type) : type(type) {}
 	};
+
+
+	struct Circle : bm::Shape
+	{
+		double radius;
+		Circle(double r) : Shape(CIRCLE), radius(r) {}
+	};
+
+	struct Rect : bm::Shape
+	{
+		double width, height;
+		Rect(double w, double h) : Shape(RECTANGLE), width(w), height(h) {}
+	};
+
 };
-
-struct Circle : bm::Shape
-{
-	double radius;
-	Circle(double r) : Shape(CIRCLE), radius(r) {}
-};
-
-struct Rect : bm::Shape
-{
-	double width, height;
-	Rect(double w, double h) : Shape(RECTANGLE), width(w), height(h) {}
-};
-
-
-
 
 #endif

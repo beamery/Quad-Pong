@@ -93,6 +93,7 @@ public:
 	virtual void update(double totalTime, double elapsedTime);
 	virtual ComponentType getComponentType() { return VISUAL; }
 	bool isVisible() { return visible; }
+	void setColor(int r, int g, int b, int a);
 	void print();
 
 private:

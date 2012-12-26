@@ -36,6 +36,7 @@ public:
 private:
 	double timer;
 	Actor *me;
+	Actor *rect;
 };
 
 class GameOverState : public IGameState

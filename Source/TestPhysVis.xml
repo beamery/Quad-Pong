@@ -5,6 +5,8 @@
     <Rect h="100" w="100" />
   </Physical>
   <Visual>
-    <Texture id="sprite_logo" />
+    <!--Texture id="sprite_logo" /-->
+    <Dimensions w="100" h="100" />
+    <Color r="0" g="250" b="0" a="155" />
   </Visual>
 </Actor>

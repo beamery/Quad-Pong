@@ -3,6 +3,7 @@
 
 #include "Actor.h"
 #include "Input.h"
+#include "Event.h"
 
 enum GameViewType
 {
@@ -40,8 +41,5 @@ public:
 protected:
 	Actor *actor;
 };
-
-
-
 
 #endif

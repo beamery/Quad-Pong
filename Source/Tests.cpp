@@ -32,7 +32,7 @@ void testActors()
 	ActorFactory *af = new ActorFactory();
 	try 
 	{
-		Actor *phys = af->createActor("TestVisual.xml");
+		Actor *phys = af->createActor("Circle.xml");
 		phys->print();
 	} 
 	catch(Status e)

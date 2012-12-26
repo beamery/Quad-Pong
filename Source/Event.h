@@ -12,8 +12,7 @@ using namespace std;
 
 enum EventType
 {
-	BASE_EVENT,
-	CHANGE_GAME_STATE,
+	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION,
 };
 
 
@@ -67,7 +66,18 @@ protected:
 	bool init;
 };
 
-
+////////////////////////////////////////////////////////////////////////////////
+// Event class which contains data for mouse movements
+////////////////////////////////////////////////////////////////////////////////
+class MousePositionEvtData : IEventData
+{
+public:
+	MousePositionEvtData(int x, int y);
+	int getX() { return x; }
+	int getY() { return y; }
+protected:
+	int x, y;
+};
 
 
 //////////////////////////////// EVENT LISTENER ////////////////////////////////
@@ -84,7 +94,7 @@ public:
 	const EventType getEventType() { return eventType; }
 	virtual void processEvent(IEventData *e) = 0;
 
-private:
+protected:
 	const EventType eventType;
 };
 
@@ -93,14 +103,25 @@ private:
 // Classes which inherit from this class are notified whenever a 
 // CHANGE_GAME_STATE event is triggered.
 ////////////////////////////////////////////////////////////////////////////////
-class ChangeGameStateListener : IEventListener
+class ChangeGameStateListener : protected IEventListener
 {
 public:
 	ChangeGameStateListener() : IEventListener(CHANGE_GAME_STATE) {}
-	void processEvent(IEventData *e);
+	virtual void processEvent(IEventData *e);
 	virtual void onChangeGameState(ChangeGameStateEvtData *event) = 0;
 };
 
+////////////////////////////////////////////////////////////////////////////////
+// Classes which inherit from this class are notified whenever a 
+// MOUSE_POSITION event is triggered.
+////////////////////////////////////////////////////////////////////////////////
+class MousePositionListener : protected IEventListener
+{
+public:
+	MousePositionListener() : IEventListener(MOUSE_POSITION) {}
+	virtual void processEvent(IEventData *e);
+	virtual void onMouseMove(MousePositionEvtData *event) = 0;
+};
 
 
 
