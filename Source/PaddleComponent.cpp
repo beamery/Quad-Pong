@@ -19,7 +19,8 @@ void PaddleComponent::init(XMLElement *xmlData)
 
 void PaddleComponent::postInit()
 {
-	EventManager::get()->addListener((IEventListener*)this);
+	EventManager::get()->addListener((IEventListener*)this, PADDLE_MOVE);
+	EventManager::get()->addListener((IEventListener*)this, BUMPER_PADDLE_COLL);
 	paddleForce = 1250;
 	forceOfFriction = 850;
 }
@@ -34,6 +35,17 @@ void PaddleComponent::update(double totalTime, double elapsedTime)
 		vel = vel.normalize();
 		vel = vel * -1 * forceOfFriction * elapsedTime;
 		phys->addImpulse(vel);
+	}
+}
+
+void PaddleComponent::processEvent(IEventData *e)
+{
+	switch (e->getEventType())
+	{
+	case PADDLE_MOVE:
+		onPaddleMove((PaddleMoveEvtData*)e); break;
+	case BUMPER_PADDLE_COLL:
+		onBumperPaddleColl((BumperPaddleCollEvtData*)e); break;
 	}
 }
 
@@ -92,5 +104,14 @@ void PaddleComponent::onPaddleMove(PaddleMoveEvtData *event)
 		default:
 			break;
 		}
+	}
+}
+
+void PaddleComponent::onBumperPaddleColl(BumperPaddleCollEvtData *event)
+{
+	if (event->getPaddle() == parent->getId())
+	{
+		PhysicalComponent *phys = (PhysicalComponent*)parent->getComponent(PHYSICAL);
+		phys->addImpulse(phys->getVelocity() * -2.0001);
 	}
 }

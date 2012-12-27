@@ -18,7 +18,7 @@ using namespace std;
 typedef tinyxml2::XMLElement XMLElement;
 typedef tinyxml2::XMLDocument XMLDoc;
 typedef tinyxml2::XMLAttribute XMLAttrib;
-
+typedef unsigned long ActorID;
 
 
 class Actor;
@@ -142,7 +142,7 @@ private:
 	vector< Vec2D<double> > impulses;
 };
 
-class PaddleComponent : ActorComponent, PaddleMoveListener
+class PaddleComponent : ActorComponent, IEventListener
 {
 public:
 	enum Orientation
@@ -153,7 +153,9 @@ public:
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double totalTime, double elapsedTime);
+	virtual void processEvent(IEventData *e);
 	virtual void onPaddleMove(PaddleMoveEvtData *event);
+	virtual void onBumperPaddleColl(BumperPaddleCollEvtData *event);
 	virtual ComponentType getComponentType() { return PADDLE; }
 
 	void setPlayer(int p) { player = p; }
@@ -168,7 +170,6 @@ private:
 
 
 //////////////////// ACTOR ////////////////////
-
 class Actor
 {
 	friend class ActorFactory;
@@ -188,7 +189,7 @@ protected:
 	void addComponent(ActorComponent *component);
 
 	map<ComponentType, ActorComponent*> components;
-	unsigned long actorId;
+	ActorID actorId;
 
 };
 

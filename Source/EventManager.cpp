@@ -9,9 +9,9 @@ EventManager::EventManager(bool global, string name) :
 		EventManager::globalEventManager = this;
 }
 
-bool EventManager::addListener(IEventListener *listener)
+bool EventManager::addListener(IEventListener *listener, EventType type)
 {
-	vector<IEventListener*> l = listeners[listener->getEventType()];
+	vector<IEventListener*> l = listeners[type];
 
 	// Check if the listener is already in the list of listeners
 	for (auto iter = l.begin(); iter != l.end(); iter++)
@@ -23,13 +23,13 @@ bool EventManager::addListener(IEventListener *listener)
 		}
 	}
 	// If it isn't, add it to the list
-	listeners[listener->getEventType()].push_back(listener);
+	listeners[type].push_back(listener);
 	return true;
 }
 
-bool EventManager::removeListener(IEventListener *listener)
+bool EventManager::removeListener(IEventListener *listener, EventType type)
 {
-	EventType t = listener->getEventType();
+	EventType t = type;
 
 	bool removed = false;
 	for (auto iter = listeners[t].begin(); iter != listeners[t].end(); iter++)
@@ -43,7 +43,6 @@ bool EventManager::removeListener(IEventListener *listener)
 		}
 	}
 	return removed;
-
 }
 
 void EventManager::triggerEvent(IEventData *e)

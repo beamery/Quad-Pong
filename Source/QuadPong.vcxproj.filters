@@ -44,9 +44,6 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{90513fd6-1347-4b3e-a15f-3a2b26d337a6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Event\EventTypes">
-      <UniqueIdentifier>{9dab5536-0245-4990-badc-dc56dc5b3681}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -106,17 +103,11 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeGameState.cpp">
-      <Filter>Source Files\Event\EventTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="Event.cpp">
-      <Filter>Source Files\Event\EventTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="PaddleMove.cpp">
-      <Filter>Source Files\Event\EventTypes</Filter>
-    </ClCompile>
     <ClCompile Include="PaddleComponent.cpp">
       <Filter>Source Files\Actors\ComponentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source Files\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +189,9 @@
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
     <Xml Include="HorizontalPaddle.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="Bumper.xml">
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
   </ItemGroup>

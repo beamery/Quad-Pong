@@ -12,12 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="ChangeGameState.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="HumanView.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
     <ClCompile Include="PaddleComponent.cpp" />
-    <ClCompile Include="PaddleMove.cpp" />
     <ClCompile Include="PhysicalComponent.cpp" />
     <ClCompile Include="PointerHandler.cpp" />
     <ClCompile Include="TestComponents.cpp" />
@@ -55,8 +53,11 @@
     <Text Include="notes.md" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Bumper.xml" />
     <Xml Include="Circle.xml" />
-    <Xml Include="HorizontalPaddle.xml" />
+    <Xml Include="HorizontalPaddle.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="Square.xml" />
     <Xml Include="test.xml" />
     <Xml Include="test1.xml">

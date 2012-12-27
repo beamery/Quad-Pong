@@ -37,13 +37,20 @@ public:
 private:
 	virtual void bindKeys();
 	virtual void createPlayer(int player, Actor	* &horiz, Actor * &vert);
+	virtual void makeBumpers();
 
 	double timer;
-	vector<Actor *> actors;
+	vector<Actor *> paddles;
+	vector<Actor *> bumpers;
 	Actor *p1Vert;
 	Actor *p1Horiz;
 	Actor *p2Vert;
 	Actor *p2Horiz;
+
+	Actor *bumperBL;
+	Actor *bumperTL;
+	Actor *bumperBR;
+	Actor *bumperTR;
 };
 
 class GameOverState : public IGameState
@@ -55,7 +62,7 @@ private:
 	double timer;
 };
 
-class StateManager : public ChangeGameStateListener	
+class StateManager : public IEventListener	
 {
 public:
 	// Get global state manager
@@ -76,7 +83,10 @@ public:
 	// Change the current game state to newState and initialize newState
 	void changeState(string newState, bool init = true);
 
-	// Overrides: ChangeGameStateListener::onChangeGameState()
+	// Overrides IEventListener::processEvent
+	virtual void processEvent(IEventData *e);
+
+	// Process game state change events
 	void onChangeGameState(ChangeGameStateEvtData *event);
 
 private:

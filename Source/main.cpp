@@ -148,7 +148,7 @@ void initEventManager()
 void initGameState()
 {
 	StateManager *stateManager = new StateManager(true);
-	EventManager::get()->addListener((IEventListener*)stateManager);
+	EventManager::get()->addListener((IEventListener*)stateManager, CHANGE_GAME_STATE);
 
 	MainMenuState *mainMenu = new MainMenuState();
 	InnerGameState *innerGame = new InnerGameState();

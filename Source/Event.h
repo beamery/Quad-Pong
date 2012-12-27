@@ -13,7 +13,10 @@ using namespace std;
 enum EventType
 {
 	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION, PADDLE_MOVE,
+	BUMPER_PADDLE_COLL,
 };
+
+typedef unsigned long ActorID;
 
 enum Direction
 {
@@ -53,16 +56,19 @@ class ChangeGameStateEvtData : IEventData
 public:
 	ChangeGameStateEvtData(const string nextState, 
 						   const string previousState, 
-						   bool init = true);
+						   bool init = true) :
+		IEventData(CHANGE_GAME_STATE, "Change Game State Event"),
+		nextState(nextState), previousState(previousState),
+		init(init) {}
 
 	// Return the state which is being changed TO
-	string getNextState();
+	string getNextState() { return nextState; }
 
 	// Return the state which is being changed FROM
-	string getPreviousState();
+	string getPreviousState() { return previousState; }
 
 	// Return whether or not to initialize the next state
-	bool needsInit();
+	bool needsInit() { return init; }
 
 protected:
 	string previousState;
@@ -76,7 +82,10 @@ protected:
 class PaddleMoveEvtData : IEventData
 {
 public:
-	PaddleMoveEvtData(int player, Direction dir, bool start = true);
+	PaddleMoveEvtData(int player, Direction dir, bool start = true) :
+		IEventData(PADDLE_MOVE, "Paddle movement"),
+		player(player), dir(dir), start(start) {}
+
 	Direction getDirection() { return dir; } 
 	int getPlayer() { return player; } 
 	bool isStarting() { return start; }
@@ -86,6 +95,24 @@ protected:
 	Direction dir;
 	int player;
 	bool start;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Event class which contains data for bumper paddle collisions.
+////////////////////////////////////////////////////////////////////////////////
+class BumperPaddleCollEvtData : IEventData
+{
+public:
+	BumperPaddleCollEvtData(ActorID bumper, ActorID paddle) :
+		IEventData(BUMPER_PADDLE_COLL, "Bumper paddle collision"),
+		bumper(bumper), paddle(paddle) {}
+
+	ActorID getBumper() { return bumper; }
+	ActorID getPaddle() { return paddle; }
+
+private:
+	ActorID bumper;
+	ActorID paddle;
 };
 
 
@@ -98,13 +125,8 @@ protected:
 class IEventListener
 {
 public:
-	IEventListener(EventType eventType = BASE_EVENT) : eventType(eventType) {}
 	IEventListener & operator=(IEventListener &iel) { return iel; }
-	const EventType getEventType() { return eventType; }
 	virtual void processEvent(IEventData *e) = 0;
-
-protected:
-	const EventType eventType;
 };
 
 
@@ -115,9 +137,8 @@ protected:
 class ChangeGameStateListener : IEventListener
 {
 public:
-	ChangeGameStateListener() : IEventListener(CHANGE_GAME_STATE) {}
+	ChangeGameStateListener() {}
 	virtual void processEvent(IEventData *e);
-	virtual void onChangeGameState(ChangeGameStateEvtData *event) = 0;
 };
 
 
@@ -128,11 +149,20 @@ public:
 class PaddleMoveListener : public IEventListener
 {
 public:
-	PaddleMoveListener() : IEventListener(PADDLE_MOVE) {}
+	PaddleMoveListener() {}
 	virtual void processEvent(IEventData *e);
-	virtual void onPaddleMove(PaddleMoveEvtData *event) = 0;
 };
 
+////////////////////////////////////////////////////////////////////////////////
+// Classes which inherit from this class are notified whenever a 
+// BUMPER_PADDLE_COLL event is triggered.
+////////////////////////////////////////////////////////////////////////////////
+class BumperPaddleListener : public IEventListener
+{
+public:
+	BumperPaddleListener() {}
+	virtual void processEvent(IEventData *e);
+};
 
 //////////////////////////////// EVENT MANAGER /////////////////////////////////
 
@@ -151,10 +181,10 @@ public:
 	string getName() { return name; }
 
 	// Add an event listener for the correspoding event type
-	bool addListener(IEventListener *listener);
+	bool addListener(IEventListener *listener, EventType type);
 
 	// Remove an event listener for the corresponding event type
-	bool removeListener(IEventListener *listener);
+	bool removeListener(IEventListener *listener, EventType type);
 
 	// Immediately fire off an event. This bypasses the event queue.
 	void triggerEvent(IEventData *e);

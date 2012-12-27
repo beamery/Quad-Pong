@@ -5,8 +5,7 @@ using namespace std;
 
 StateManager *StateManager::globalStateManager = nullptr;
 
-StateManager::StateManager(bool global) : 
-	ChangeGameStateListener(), currentState(nullptr)
+StateManager::StateManager(bool global) : currentState(nullptr)
 {
 	if (global)
 		StateManager::globalStateManager = this;
@@ -37,6 +36,13 @@ void StateManager::changeState(string newState, bool init)
 	if (init)
 		currentState->init();
 }
+
+void StateManager::processEvent(IEventData *e)
+{
+	if (e->getEventType() == CHANGE_GAME_STATE)
+		onChangeGameState((ChangeGameStateEvtData*)e);
+}
+
 
 void StateManager::onChangeGameState(ChangeGameStateEvtData *event)
 {

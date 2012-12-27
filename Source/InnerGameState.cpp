@@ -10,6 +10,11 @@ void InnerGameState::init()
 	ActorFactory af;
 	createPlayer(1, p1Horiz, p1Vert);
 	createPlayer(2, p2Horiz, p2Vert);
+	paddles.push_back(p1Horiz);
+	paddles.push_back(p2Horiz);
+	paddles.push_back(p1Vert);
+	paddles.push_back(p2Vert);
+	makeBumpers();
 
 	humanView = new HumanView();
 	bindKeys();
@@ -17,18 +22,32 @@ void InnerGameState::init()
 
 void InnerGameState::update(double totalTime, double elapsedTime)
 {
-	glClearColor(0.2f, 0.2f, 0.4f, 1.0f);
+	glClearColor(0.1f, 0.1f, 0.3f, 1.0f);
 
 	timer += elapsedTime;
 
-	p1Vert->update(totalTime, elapsedTime);
-	p2Vert->update(totalTime, elapsedTime);
-	p1Horiz->update(totalTime, elapsedTime);
-	p2Horiz->update(totalTime, elapsedTime);
-	humanView->drawActor(p1Vert);
-	humanView->drawActor(p2Vert);
-	humanView->drawActor(p1Horiz);
-	humanView->drawActor(p2Horiz);
+	for (auto i = paddles.begin(); i != paddles.end(); i++)
+	{
+		(*i)->update(totalTime, elapsedTime);
+		humanView->drawActor(*i);
+
+		for (auto j = bumpers.begin(); j != bumpers.end(); j++)
+		{
+			PhysicalComponent *bPhys = (PhysicalComponent*)(*j)->getComponent(PHYSICAL);
+			PhysicalComponent *pPhys = (PhysicalComponent*)(*i)->getComponent(PHYSICAL);
+
+			if (Collision::collide(bPhys, pPhys))
+			{
+				BumperPaddleCollEvtData *e = new BumperPaddleCollEvtData((*j)->getId(), (*i)->getId());
+				EventManager::get()->queueEvent((IEventData*)e);
+			}
+		}
+	}
+	for (auto i = bumpers.begin(); i != bumpers.end(); i++)
+	{
+		(*i)->update(totalTime, elapsedTime);
+		humanView->drawActor(*i);
+	}
 
 	/*if (timer > 10)
 	{
@@ -75,19 +94,43 @@ void InnerGameState::createPlayer(int player, Actor	* &horiz, Actor * &vert)
 
 	if (player == 1)
 	{
-		((PhysicalComponent*)horiz->getComponent(PHYSICAL))->setPos(400, 30);
-		((PhysicalComponent*)vert->getComponent(PHYSICAL))->setPos(30, 300);
+		((PhysicalComponent*)horiz->getComponent(PHYSICAL))->setPos(400, 25);
+		((PhysicalComponent*)vert->getComponent(PHYSICAL))->setPos(25, 300);
 
-		((VisualComponent*)horiz->getComponent(VISUAL))->setColor(30, 200, 30, 220);
-		((VisualComponent*)vert->getComponent(VISUAL))->setColor(30, 200, 30, 220);
+		((VisualComponent*)horiz->getComponent(VISUAL))->setColor(100, 255, 120, 255);
+		((VisualComponent*)vert->getComponent(VISUAL))->setColor(100, 255, 120, 255);
 
 	}
 	else if (player == 2)
 	{
-		((PhysicalComponent*)horiz->getComponent(PHYSICAL))->setPos(400, 570);
-		((PhysicalComponent*)vert->getComponent(PHYSICAL))->setPos(770, 300);
+		((PhysicalComponent*)horiz->getComponent(PHYSICAL))->setPos(400, 575);
+		((PhysicalComponent*)vert->getComponent(PHYSICAL))->setPos(775, 300);
 
-		((VisualComponent*)horiz->getComponent(VISUAL))->setColor(30, 150, 200, 220);
-		((VisualComponent*)vert->getComponent(VISUAL))->setColor(30, 150, 200, 220);
+		((VisualComponent*)horiz->getComponent(VISUAL))->setColor(100, 200, 255, 255);
+		((VisualComponent*)vert->getComponent(VISUAL))->setColor(100, 200, 255, 255);
 	}
+}
+
+void InnerGameState::makeBumpers()
+{
+	ActorFactory af;
+	bumperBL = af.createActor("Bumper.xml");
+	bumperBR = af.createActor("Bumper.xml");
+	bumperTL = af.createActor("Bumper.xml");
+	bumperTR = af.createActor("Bumper.xml");
+
+	PhysicalComponent *physBL = (PhysicalComponent*)bumperBL->getComponent(PHYSICAL);
+	PhysicalComponent *physBR = (PhysicalComponent*)bumperBR->getComponent(PHYSICAL);
+	PhysicalComponent *physTL = (PhysicalComponent*)bumperTL->getComponent(PHYSICAL);
+	PhysicalComponent *physTR = (PhysicalComponent*)bumperTR->getComponent(PHYSICAL);
+
+	physBL->setPos(0, 600);
+	physBR->setPos(800, 600);
+	physTL->setPos(0, 0);
+	physTR->setPos(800, 0);
+
+	bumpers.push_back(bumperBL);
+	bumpers.push_back(bumperBR);
+	bumpers.push_back(bumperTL);
+	bumpers.push_back(bumperTR);
 }
