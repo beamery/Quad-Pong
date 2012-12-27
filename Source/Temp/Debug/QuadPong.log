@@ -1,4 +1,4 @@
-﻿Build started 12/26/2012 10:29:52 PM.
+﻿Build started 12/26/2012 10:36:31 PM.
      1>Project "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\QuadPong.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\\" /Fd"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt PaddleComponent.cpp
@@ -6,7 +6,7 @@
      1>c:\users\brian\documents\github\quad-pong\source\actor.h(40): warning C4100: 'xmlData' : unreferenced formal parameter
      1>c:\users\brian\documents\github\quad-pong\source\actor.h(42): warning C4100: 'elapsedTime' : unreferenced formal parameter
      1>c:\users\brian\documents\github\quad-pong\source\actor.h(42): warning C4100: 'totalTime' : unreferenced formal parameter
-     1>c:\users\brian\documents\github\quad-pong\source\paddlecomponent.cpp(28): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\paddlecomponent.cpp(27): warning C4100: 'totalTime' : unreferenced formal parameter
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.exe" /INCREMENTAL /NOLOGO "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" OpenGL32.lib GlU32.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.lib" /MACHINE:X86 "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\Actor.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\ChangeGameState.obj"
@@ -36,4 +36,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.21
+Time Elapsed 00:00:03.36

@@ -20,7 +20,6 @@ void PaddleComponent::init(XMLElement *xmlData)
 void PaddleComponent::postInit()
 {
 	EventManager::get()->addListener((IEventListener*)this);
-	beingPushed = false;
 	paddleForce = 1250;
 	forceOfFriction = 850;
 }
@@ -54,7 +53,6 @@ void PaddleComponent::onPaddleMove(PaddleMoveEvtData *event)
 			if (event->isStarting())
 			{
 				phys->addForce(Vec2D<double>(-paddleForce, 0));
-				beingPushed = true;
 			}
 			else
 				phys->removeForce(Vec2D<double>(-paddleForce, 0));
@@ -63,7 +61,6 @@ void PaddleComponent::onPaddleMove(PaddleMoveEvtData *event)
 			if (event->isStarting())
 			{
 				phys->addForce(Vec2D<double>(paddleForce, 0));
-				beingPushed = true;
 			}
 			else
 				phys->removeForce(Vec2D<double>(paddleForce, 0));
@@ -80,7 +77,6 @@ void PaddleComponent::onPaddleMove(PaddleMoveEvtData *event)
 			if (event->isStarting())
 			{
 				phys->addForce(Vec2D<double>(0, -paddleForce));
-				beingPushed = true;
 			}
 			else
 				phys->removeForce(Vec2D<double>(0, -paddleForce));
@@ -89,7 +85,6 @@ void PaddleComponent::onPaddleMove(PaddleMoveEvtData *event)
 			if (event->isStarting())
 			{
 				phys->addForce(Vec2D<double>(0, paddleForce));
-				beingPushed = true;
 			}
 			else
 				phys->removeForce(Vec2D<double>(0, paddleForce));

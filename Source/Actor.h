@@ -157,11 +157,9 @@ public:
 	virtual ComponentType getComponentType() { return PADDLE; }
 
 	void setPlayer(int p) { player = p; }
-	bool isBeingPushed() { return beingPushed; }
 
 private:
 	int player;
-	bool beingPushed;
 	double paddleForce;
 	double forceOfFriction;
 	Orientation orientation;
