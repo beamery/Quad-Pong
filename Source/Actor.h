@@ -10,8 +10,8 @@
 #include "Error.h"
 #include "Utils.h"
 #include "Shape.h"
-#include "Error.h"
 #include "Texture.h"
+#include "Event.h"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ class Actor;
 
 enum ComponentType
 {
-	BASE_COMPONENT, VISUAL, PHYSICAL, TEST1, TEST2,
+	BASE_COMPONENT, VISUAL, PHYSICAL, PADDLE, TEST1, TEST2,
 };
 
 class ActorComponent
@@ -142,6 +142,32 @@ private:
 	vector< Vec2D<double> > impulses;
 };
 
+class PaddleComponent : ActorComponent, PaddleMoveListener
+{
+public:
+	enum Orientation
+	{
+		VERTICAL, HORIZONTAL
+	};
+
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double totalTime, double elapsedTime);
+	virtual void onPaddleMove(PaddleMoveEvtData *event);
+	virtual ComponentType getComponentType() { return PADDLE; }
+
+	void setPlayer(int p) { player = p; }
+	bool isBeingPushed() { return beingPushed; }
+
+private:
+	int player;
+	bool beingPushed;
+	double paddleForce;
+	double forceOfFriction;
+	Orientation orientation;
+
+};
+
 
 //////////////////// ACTOR ////////////////////
 
@@ -151,7 +177,7 @@ class Actor
 
 public:
 	Actor() {};
-	virtual ~Actor() {};
+	virtual ~Actor() {}
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double totalTime, double elapsedTime);

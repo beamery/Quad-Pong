@@ -25,6 +25,7 @@ public:
 	bool operator!=(const Vec2D &v2);
 	string toStr();
 	double length();
+	Vec2D & normalize();
 };
 
 template <typename E>
@@ -107,5 +108,13 @@ double Vec2D<E>::length()
 	double ySquared = y * y;
 	return sqrt(xSquared + ySquared);
 }
+
+template <typename E>
+Vec2D<E> & Vec2D<E>::normalize()
+{
+	Vec2D<E> *tmp = new Vec2D<E>(x / length(), y / length());
+	return *tmp;
+}
+
 
 #endif

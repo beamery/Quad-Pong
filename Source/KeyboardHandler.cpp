@@ -2,14 +2,41 @@
 
 void KeyboardHandler::onKeyDown(Event e)
 {
-	std::cout << getKeyName(e.key.code) << " pressed" << std::endl;
+	// if the key is not mapped, return
+	if (keyMap.count(e.key.code) == 0)
+		return;
+
+	IEventData *data = keyMap[e.key.code];
+	switch (data->getEventType())
+	{
+	case PADDLE_MOVE:
+		PaddleMoveEvtData *pEvent = (PaddleMoveEvtData*)data;
+		pEvent->setStart(true);
+		EventManager::get()->queueEvent((IEventData*)pEvent);
+	}
+
 }
 
 void KeyboardHandler::onKeyUp(Event e)
 {
-	std::cout << getKeyName(e.key.code) << " released" << std::endl;
+	// if the key is not mapped, return
+	if (keyMap.count(e.key.code) == 0)
+		return;
+
+	IEventData *data = keyMap[e.key.code];
+	switch (data->getEventType())
+	{
+	case PADDLE_MOVE:
+		PaddleMoveEvtData *pEvent = (PaddleMoveEvtData*)data;
+		pEvent->setStart(false);
+		EventManager::get()->queueEvent((IEventData*)pEvent);
+	}
 }
 
+void KeyboardHandler::bind(sf::Keyboard::Key key, IEventData *e)
+{
+	keyMap[key] = e;
+}
 
 const char * KeyboardHandler::getKeyName(const sf::Keyboard::Key key) 
 {

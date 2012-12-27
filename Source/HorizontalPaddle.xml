@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Physical>
+    <Position x="400" y="300" />
+    <Rect w="100" h="25" />
+  </Physical>
+  <Visual>
+    <!--Texture id="sprite_logo" /-->
+    <Dimensions w="100" h="25" />
+    <Color r="0" g="250" b="0" a="155" />
+  </Visual>
+  <Paddle player="1" orientation="horizontal"/>
+</Actor>

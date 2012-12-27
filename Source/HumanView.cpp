@@ -49,6 +49,7 @@ void HumanView::drawActor(Actor *a)
 		// Cleanup
 		glEnd();
 		glDisable(GL_TEXTURE_2D);
+		vertices.clear();
 
 	} 
 	catch (Status s)

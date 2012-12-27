@@ -112,8 +112,11 @@
     <ClCompile Include="Event.cpp">
       <Filter>Source Files\Event\EventTypes</Filter>
     </ClCompile>
-    <ClCompile Include="MousePosition.cpp">
+    <ClCompile Include="PaddleMove.cpp">
       <Filter>Source Files\Event\EventTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="PaddleComponent.cpp">
+      <Filter>Source Files\Actors\ComponentTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +192,12 @@
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
     <Xml Include="Square.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="VerticalPaddle.xml">
+      <Filter>Source Files\Actors\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="HorizontalPaddle.xml">
       <Filter>Source Files\Actors\ActorTypes</Filter>
     </Xml>
   </ItemGroup>

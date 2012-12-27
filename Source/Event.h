@@ -12,9 +12,13 @@ using namespace std;
 
 enum EventType
 {
-	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION,
+	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION, PADDLE_MOVE,
 };
 
+enum Direction
+{
+	UP, DOWN, LEFT, RIGHT
+};
 
 ////////////////////////////////// EVENT DATA //////////////////////////////////
 
@@ -67,16 +71,21 @@ protected:
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-// Event class which contains data for mouse movements
+// Event class which contains data for paddle movements.
 ////////////////////////////////////////////////////////////////////////////////
-class MousePositionEvtData : IEventData
+class PaddleMoveEvtData : IEventData
 {
 public:
-	MousePositionEvtData(int x, int y);
-	int getX() { return x; }
-	int getY() { return y; }
+	PaddleMoveEvtData(int player, Direction dir, bool start = true);
+	Direction getDirection() { return dir; } 
+	int getPlayer() { return player; } 
+	bool isStarting() { return start; }
+	void setStart(bool s) { start = s; }
+
 protected:
-	int x, y;
+	Direction dir;
+	int player;
+	bool start;
 };
 
 
@@ -103,7 +112,7 @@ protected:
 // Classes which inherit from this class are notified whenever a 
 // CHANGE_GAME_STATE event is triggered.
 ////////////////////////////////////////////////////////////////////////////////
-class ChangeGameStateListener : protected IEventListener
+class ChangeGameStateListener : IEventListener
 {
 public:
 	ChangeGameStateListener() : IEventListener(CHANGE_GAME_STATE) {}
@@ -111,18 +120,18 @@ public:
 	virtual void onChangeGameState(ChangeGameStateEvtData *event) = 0;
 };
 
+
 ////////////////////////////////////////////////////////////////////////////////
 // Classes which inherit from this class are notified whenever a 
-// MOUSE_POSITION event is triggered.
+// PADDLE_MOVE event is triggered.
 ////////////////////////////////////////////////////////////////////////////////
-class MousePositionListener : protected IEventListener
+class PaddleMoveListener : public IEventListener
 {
 public:
-	MousePositionListener() : IEventListener(MOUSE_POSITION) {}
+	PaddleMoveListener() : IEventListener(PADDLE_MOVE) {}
 	virtual void processEvent(IEventData *e);
-	virtual void onMouseMove(MousePositionEvtData *event) = 0;
+	virtual void onPaddleMove(PaddleMoveEvtData *event) = 0;
 };
-
 
 
 //////////////////////////////// EVENT MANAGER /////////////////////////////////

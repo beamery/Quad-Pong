@@ -6,7 +6,8 @@ Currently working on the human view
 
 Next Tasks
 ----------
-- Test collisions between objects
+- Modify renderer to handle batch rendering
+- Figure out how to detect memory leaks
 - Transform raw input events into game events
 
 Design of Sphere and rectangle components:

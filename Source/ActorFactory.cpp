@@ -17,6 +17,10 @@ ActorComponent * createPhysicalComponent()
 {
 	return (ActorComponent *)(new PhysicalComponent());
 }
+ActorComponent * createPaddleComponent()
+{
+	return (ActorComponent *)(new PaddleComponent());
+}
 
 
 ActorFactory::ActorFactory() : lastActorId(0)
@@ -25,6 +29,7 @@ ActorFactory::ActorFactory() : lastActorId(0)
 	componentCreatorMap["Physical"] = createPhysicalComponent;
 	componentCreatorMap["Test1"] = createTestComponent1;
 	componentCreatorMap["Test2"] = createTestComponent2;
+	componentCreatorMap["Paddle"] = createPaddleComponent;
 }
 
 

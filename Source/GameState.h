@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 #include "Event.h"
 #include "Views.h"
 
@@ -34,9 +35,15 @@ public:
 	virtual void init();
 	virtual void update(double totalTime, double elapsedTime);
 private:
+	virtual void bindKeys();
+	virtual void createPlayer(int player, Actor	* &horiz, Actor * &vert);
+
 	double timer;
-	Actor *me;
-	Actor *rect;
+	vector<Actor *> actors;
+	Actor *p1Vert;
+	Actor *p1Horiz;
+	Actor *p2Vert;
+	Actor *p2Horiz;
 };
 
 class GameOverState : public IGameState

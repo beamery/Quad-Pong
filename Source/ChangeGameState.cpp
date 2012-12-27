@@ -29,5 +29,4 @@ void ChangeGameStateListener::processEvent(IEventData *e)
 	case CHANGE_GAME_STATE:
 		onChangeGameState((ChangeGameStateEvtData*)e);
 	}
-
 }

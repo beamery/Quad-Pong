@@ -2,7 +2,7 @@
 
 VisualComponent::~VisualComponent()
 {
-
+	delete texture;
 }
 
 void VisualComponent::init(XMLElement *xmlData)

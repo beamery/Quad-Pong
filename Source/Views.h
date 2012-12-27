@@ -20,13 +20,12 @@ public:
 class HumanView : GameView
 {
 public:
-	HumanView(Actor * a = 0);
-	virtual void update(double totalTime, double elapsedTime);
-
 	// input handling
 	KeyboardHandler *keyboardHandler;
 	PointerHandler *pointerHandler;
 	
+	HumanView(Actor * a = 0);
+	virtual void update(double totalTime, double elapsedTime);
 
 	// rendering
 	virtual void drawActor(Actor *a); // <-- Replace with drawing screen elements?

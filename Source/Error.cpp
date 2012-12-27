@@ -34,6 +34,10 @@ void Error::print(Status status)
 		cerr << "there is no texture at that path"; break;
 	case BAD_DIMENSION_ERR:
 		cerr << "no texture and no dimension given"; break;
+	case INVALID_PLAYER_ERR:
+		cerr << "paddle not assigned a player"; break;
+	case INVALID_ORIENTATION_ERR:
+		cerr << "paddle orientation not valid"; break;
 
 	default:	
 		cerr << "undefined error code: " << status;

@@ -4,10 +4,6 @@
 void PointerHandler::onPointerMove(Event e, Window &w) 
 {
 	//std::cout << "Mouse at (" << Mouse::getPosition(w).x << ", " << Mouse::getPosition(w).y << ")" << std::endl;
-	int x = Mouse::getPosition(w).x;
-	int y = Mouse::getPosition(w).y;
-	MousePositionEvtData *data = new MousePositionEvtData(x, y);
-	EventManager::get()->queueEvent((IEventData*)data);
 }
 
 void PointerHandler::onPointerButtonDown(Event e)

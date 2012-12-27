@@ -25,6 +25,9 @@ enum Status
 
 // Visual errors
 	BAD_DIMENSION_ERR,
+
+// Paddle errors
+	INVALID_PLAYER_ERR, INVALID_ORIENTATION_ERR,
 };
 
 class Error
