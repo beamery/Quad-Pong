@@ -112,6 +112,6 @@ void PaddleComponent::onBumperPaddleColl(BumperPaddleCollEvtData *event)
 	if (event->getPaddle() == parent->getId())
 	{
 		PhysicalComponent *phys = (PhysicalComponent*)parent->getComponent(PHYSICAL);
-		phys->addImpulse(phys->getVelocity() * -2.0001);
+		phys->addImpulse(phys->getVelocity() * -2.01);
 	}
 }

@@ -26,11 +26,15 @@ void InnerGameState::update(double totalTime, double elapsedTime)
 
 	timer += elapsedTime;
 
+	// Go through the paddles
 	for (auto i = paddles.begin(); i != paddles.end(); i++)
 	{
+		// update and draw the paddle
+		// sensitive: this must go before the paddle collisions
 		(*i)->update(totalTime, elapsedTime);
 		humanView->drawActor(*i);
-
+		
+		// If the paddle collides with a bumper, fire a collision event
 		for (auto j = bumpers.begin(); j != bumpers.end(); j++)
 		{
 			PhysicalComponent *bPhys = (PhysicalComponent*)(*j)->getComponent(PHYSICAL);
@@ -43,6 +47,7 @@ void InnerGameState::update(double totalTime, double elapsedTime)
 			}
 		}
 	}
+	// update and draw the bumpers
 	for (auto i = bumpers.begin(); i != bumpers.end(); i++)
 	{
 		(*i)->update(totalTime, elapsedTime);
@@ -94,6 +99,7 @@ void InnerGameState::createPlayer(int player, Actor	* &horiz, Actor * &vert)
 
 	if (player == 1)
 	{
+		// set the position and color for player 1
 		((PhysicalComponent*)horiz->getComponent(PHYSICAL))->setPos(400, 25);
 		((PhysicalComponent*)vert->getComponent(PHYSICAL))->setPos(25, 300);
 
@@ -103,6 +109,7 @@ void InnerGameState::createPlayer(int player, Actor	* &horiz, Actor * &vert)
 	}
 	else if (player == 2)
 	{
+		// set the position and color for player 2
 		((PhysicalComponent*)horiz->getComponent(PHYSICAL))->setPos(400, 575);
 		((PhysicalComponent*)vert->getComponent(PHYSICAL))->setPos(775, 300);
 
