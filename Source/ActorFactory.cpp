@@ -21,15 +21,24 @@ ActorComponent * createPaddleComponent()
 {
 	return (ActorComponent *)(new PaddleComponent());
 }
+ActorComponent * createBallComponent()
+{
+	return (ActorComponent *)(new PaddleComponent());
+}
 
+ActorFactory *ActorFactory::globalActorFactory = nullptr;
 
-ActorFactory::ActorFactory() : lastActorId(0)
+ActorFactory::ActorFactory(bool global) : lastActorId(0)
 {
 	componentCreatorMap["Visual"] = createVisualComponent;
 	componentCreatorMap["Physical"] = createPhysicalComponent;
 	componentCreatorMap["Test1"] = createTestComponent1;
 	componentCreatorMap["Test2"] = createTestComponent2;
 	componentCreatorMap["Paddle"] = createPaddleComponent;
+	componentCreatorMap["Ball"] = createBallComponent;
+
+	if (global)
+		ActorFactory::globalActorFactory = this;
 }
 
 

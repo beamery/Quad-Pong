@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Physical>
+    <Position x="400" y="300" />
+    <Circle r="20" />
+  </Physical>
+  <Visual>
+    <Texture id="circle" />
+    <Dimensions w="40" h="40" />
+    <Color r="200" g="50" b="50" a="255" />
+  </Visual>
+  <!-- Ball /-->
+</Actor>

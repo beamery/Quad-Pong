@@ -1,17 +1,122 @@
-﻿Build started 12/28/2012 10:50:31 AM.
+﻿Build started 12/30/2012 2:22:26 AM.
      1>Project "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\QuadPong.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\\" /Fd"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt PaddleComponent.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D SFML_DYNAMIC /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\\" /Fd"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Actor.cpp ActorFactory.cpp BallComponent.cpp Collision.cpp Event.cpp EventManager.cpp GameOverState.cpp HumanView.cpp InnerGameState.cpp KeyboardHandler.cpp MainMenuState.cpp Match.cpp PaddleComponent.cpp PhysicalComponent.cpp PointerHandler.cpp StateManager.cpp TestComponents.cpp Tests.cpp VisualComponent.cpp Volley.cpp main.cpp
+         Volley.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         Generating Code...
+         Compiling...
+         main.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\main.cpp(58): warning C4189: 'background' : local variable is initialized but not referenced
+     1>c:\users\brian\documents\github\quad-pong\source\main.cpp(142): warning C4189: 'eventManager' : local variable is initialized but not referenced
+     1>c:\users\brian\documents\github\quad-pong\source\main.cpp(150): warning C4189: 'af' : local variable is initialized but not referenced
+     1>c:\users\brian\documents\github\quad-pong\source\main.cpp(177): warning C4189: 'textureManager' : local variable is initialized but not referenced
+         VisualComponent.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\visualcomponent.cpp(82): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\visualcomponent.cpp(82): warning C4100: 'totalTime' : unreferenced formal parameter
+         Tests.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         TestComponents.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(16): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(53): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(55): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(62): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(64): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(71): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(73): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(46): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(49): warning C4189: 'gInc' : local variable is initialized but not referenced
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(48): warning C4189: 'rInc' : local variable is initialized but not referenced
+     1>c:\users\brian\documents\github\quad-pong\source\testcomponents.cpp(50): warning C4189: 'bInc' : local variable is initialized but not referenced
+         StateManager.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         PointerHandler.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\pointerhandler.cpp(4): warning C4100: 'w' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\pointerhandler.cpp(4): warning C4100: 'e' : unreferenced formal parameter
+         PhysicalComponent.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\physicalcomponent.cpp(68): warning C4100: 'totalTime' : unreferenced formal parameter
          PaddleComponent.cpp
-     1>c:\users\brian\documents\github\quad-pong\source\actor.h(40): warning C4100: 'xmlData' : unreferenced formal parameter
-     1>c:\users\brian\documents\github\quad-pong\source\actor.h(42): warning C4100: 'elapsedTime' : unreferenced formal parameter
-     1>c:\users\brian\documents\github\quad-pong\source\actor.h(42): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
      1>c:\users\brian\documents\github\quad-pong\source\paddlecomponent.cpp(28): warning C4100: 'totalTime' : unreferenced formal parameter
+         Match.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         MainMenuState.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\mainmenustate.cpp(13): warning C4100: 'totalTime' : unreferenced formal parameter
+         KeyboardHandler.cpp
+         InnerGameState.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         HumanView.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\humanview.cpp(10): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\humanview.cpp(10): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\humanview.cpp(43): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\brian\documents\github\quad-pong\source\humanview.cpp(46): warning C4244: 'argument' : conversion from 'int' to 'GLubyte', possible loss of data
+         GameOverState.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\gameoverstate.cpp(13): warning C4100: 'totalTime' : unreferenced formal parameter
+         EventManager.cpp
+         Event.cpp
+         Collision.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         BallComponent.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\ballcomponent.cpp(3): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\ballcomponent.cpp(14): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\ballcomponent.cpp(14): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\ballcomponent.cpp(29): warning C4100: 'event' : unreferenced formal parameter
+         ActorFactory.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+         Actor.cpp
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(46): warning C4100: 'xmlData' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'elapsedTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.h(48): warning C4100: 'totalTime' : unreferenced formal parameter
+     1>c:\users\brian\documents\github\quad-pong\source\actor.cpp(3): warning C4100: 'xmlData' : unreferenced formal parameter
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.exe" /INCREMENTAL /NOLOGO "sfml-audio-d.lib" "sfml-graphics-d.lib" "sfml-main-d.lib" "sfml-network-d.lib" "sfml-system-d.lib" "sfml-window-d.lib" OpenGL32.lib GlU32.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\QuadPongWin32Debug.lib" /MACHINE:X86 "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\Actor.obj"
+         "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\BallComponent.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\Collision.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\HumanView.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\KeyboardHandler.obj"
+         "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\Match.obj"
+         "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\Volley.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\PaddleComponent.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\PhysicalComponent.obj"
          "C:\Users\Brian\Documents\GitHub\Quad-Pong\Source\\..\Temp\Debug\PointerHandler.obj"
@@ -34,4 +139,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.29
+Time Elapsed 00:00:41.09

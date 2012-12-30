@@ -13,15 +13,20 @@ using namespace std;
 enum EventType
 {
 	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION, PADDLE_MOVE,
-	BUMPER_PADDLE_COLL,
+	BUMPER_PADDLE_COLL, BALL_PADDLE_COLL,
 };
-
-typedef unsigned long ActorID;
 
 enum Direction
 {
 	UP, DOWN, LEFT, RIGHT
 };
+
+enum RelativeDir
+{
+	R_UP, R_DOWN, R_LEFT, R_RIGHT, R_UP_LEFT, R_UP_RIGHT, R_DOWN_LEFT, R_DOWN_RIGHT
+};
+
+typedef unsigned long ActorID;
 
 ////////////////////////////////// EVENT DATA //////////////////////////////////
 
@@ -98,7 +103,7 @@ protected:
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-// Event class which contains data for bumper paddle collisions.
+// Event class which contains data for bumper-paddle collisions.
 ////////////////////////////////////////////////////////////////////////////////
 class BumperPaddleCollEvtData : IEventData
 {
@@ -115,6 +120,23 @@ private:
 	ActorID paddle;
 };
 
+////////////////////////////////////////////////////////////////////////////////
+// Event class which contains data for ball-paddle collisions.
+////////////////////////////////////////////////////////////////////////////////
+class BallPaddleCollEvtData : IEventData
+{
+public:
+	BallPaddleCollEvtData(ActorID paddle, RelativeDir r) :
+		IEventData(BALL_PADDLE_COLL, "Ball paddle collision"),
+		paddle(paddle), relDir(r) {}
+
+	ActorID getPaddle() { return paddle; }
+	RelativeDir getRelDir() { return relDir; }
+
+private:
+	ActorID paddle;
+	RelativeDir relDir;
+};
 
 //////////////////////////////// EVENT LISTENER ////////////////////////////////
 

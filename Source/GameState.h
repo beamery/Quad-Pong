@@ -6,6 +6,7 @@
 #include <vector>
 #include "Event.h"
 #include "Views.h"
+#include "Pong.h"
 
 using namespace std;
 
@@ -35,22 +36,10 @@ public:
 	virtual void init();
 	virtual void update(double totalTime, double elapsedTime);
 private:
-	virtual void bindKeys();
-	virtual void createPlayer(int player, Actor	* &horiz, Actor * &vert);
-	virtual void makeBumpers();
+	void bindKeys();
 
 	double timer;
-	vector<Actor *> paddles;
-	vector<Actor *> bumpers;
-	Actor *p1Vert;
-	Actor *p1Horiz;
-	Actor *p2Vert;
-	Actor *p2Horiz;
-
-	Actor *bumperBL;
-	Actor *bumperTL;
-	Actor *bumperBR;
-	Actor *bumperTR;
+	Match *match;
 };
 
 class GameOverState : public IGameState

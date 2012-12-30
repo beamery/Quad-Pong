@@ -15,6 +15,7 @@ using namespace std;
 bool handleEvent(sf::Event event);
 void initGL(int width, int height);
 void initEventManager();
+void initActorFactory();
 void initGameState();
 void initTextures();
 
@@ -38,6 +39,7 @@ int main()
 	// Initialize game data
 	initGL(window.getSize().x, window.getSize().y);
 	initEventManager();
+	initActorFactory();
 	initGameState();
 	initTextures();
 
@@ -140,7 +142,13 @@ void initEventManager()
 	EventManager *eventManager = new EventManager(true, "Main Event Manager");
 }
 
-
+////////////////////////////////////////////////////////////////////////////////
+// Initialize our actor factory, called once at program startup
+////////////////////////////////////////////////////////////////////////////////
+void initActorFactory()
+{
+	ActorFactory *af = new ActorFactory(true);
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize our state manager, called once at program startup
@@ -168,7 +176,6 @@ void initTextures()
 {
 	TextureManager *textureManager = new TextureManager(true);
 
-	TextureManager::get()->loadTexture("../Assets/SpriteLogo.jpg", "sprite_logo");
 	TextureManager::get()->loadTexture("../Assets/Circle.png", "circle");
 }
 

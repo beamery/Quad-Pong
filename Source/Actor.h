@@ -26,8 +26,14 @@ class Actor;
 
 enum ComponentType
 {
-	BASE_COMPONENT, VISUAL, PHYSICAL, PADDLE, TEST1, TEST2,
+	BASE_COMPONENT, VISUAL, PHYSICAL, PADDLE, TEST1, TEST2, BALL,
 };
+
+enum Orientation
+{
+	VERTICAL, HORIZONTAL
+};
+
 
 class ActorComponent
 {
@@ -145,19 +151,15 @@ private:
 class PaddleComponent : ActorComponent, IEventListener
 {
 public:
-	enum Orientation
-	{
-		VERTICAL, HORIZONTAL
-	};
-
 	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
 	virtual void update(double totalTime, double elapsedTime);
 	virtual void processEvent(IEventData *e);
-	virtual void onPaddleMove(PaddleMoveEvtData *event);
-	virtual void onBumperPaddleColl(BumperPaddleCollEvtData *event);
+	void onPaddleMove(PaddleMoveEvtData *event);
+	void onBumperPaddleColl(BumperPaddleCollEvtData *event);
 	virtual ComponentType getComponentType() { return PADDLE; }
 
+	Orientation getOrientation() { return orientation; }
 	void setPlayer(int p) { player = p; }
 
 private:
@@ -166,6 +168,17 @@ private:
 	double forceOfFriction;
 	Orientation orientation;
 
+};
+
+class BallComponent : ActorComponent
+{
+public:
+	virtual void init(XMLElement *xmlData);
+	virtual void postInit();
+	virtual void update(double totalTime, double elapsedTime);
+	virtual void processEvent(IEventData *e);
+	void onBallPaddleColl(BallPaddleCollEvtData *event);
+	virtual ComponentType getComponentType() { return BALL; }
 };
 
 
@@ -200,13 +213,15 @@ typedef ActorComponent *(*ComponentCreator)();
 class ActorFactory
 {
 public:
-	ActorFactory();
+	ActorFactory(bool global = false);
 	~ActorFactory() {}
 	Actor * createActor(const char *actorFilename);
+	static ActorFactory * get() { return globalActorFactory; }
 
 private:
 	unsigned long lastActorId;
 	map<string, ComponentCreator> componentCreatorMap;
+	static ActorFactory *globalActorFactory;
 
 	unsigned long getNextActorId() { lastActorId++; return lastActorId; }
 	ActorComponent * createActorComponent(XMLElement *xmlData);

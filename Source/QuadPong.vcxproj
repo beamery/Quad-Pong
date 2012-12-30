@@ -12,9 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="BallComponent.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="HumanView.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
+    <ClCompile Include="Match.cpp" />
+    <ClCompile Include="Volley.cpp" />
     <ClCompile Include="PaddleComponent.cpp" />
     <ClCompile Include="PhysicalComponent.cpp" />
     <ClCompile Include="PointerHandler.cpp" />
@@ -41,6 +44,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Pong.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Tests.h" />
     <ClInclude Include="Texture.h" />
@@ -53,6 +57,7 @@
     <Text Include="notes.md" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Ball.xml" />
     <Xml Include="Bumper.xml" />
     <Xml Include="Circle.xml" />
     <Xml Include="HorizontalPaddle.xml">

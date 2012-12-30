@@ -17,17 +17,8 @@
     <Filter Include="Source Files\Event">
       <UniqueIdentifier>{cb7b70be-99e3-4cb6-8126-1caafb6c6c91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Actors">
-      <UniqueIdentifier>{061335c2-ad07-409f-8f77-0a877a489aec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TinyXml">
       <UniqueIdentifier>{aca7f8bd-8948-446b-82c2-f03502773331}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Actors\ActorTypes">
-      <UniqueIdentifier>{9bf4f231-0e44-4402-9f1e-f969115ec661}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Actors\ComponentTypes">
-      <UniqueIdentifier>{6123cb5e-cbbb-4923-b42c-a45ff242f98e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Views">
       <UniqueIdentifier>{6dda93b5-213f-4f18-a70f-b6db8b508b54}</UniqueIdentifier>
@@ -35,14 +26,26 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{403d9897-010f-4212-b60c-66205b40f1f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{e4e145a1-0202-494d-bd8b-709b1eea63d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{0e510879-47dc-42e6-baae-5f73fb7fe25e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{90513fd6-1347-4b3e-a15f-3a2b26d337a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actor">
+      <UniqueIdentifier>{061335c2-ad07-409f-8f77-0a877a489aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actor\ActorTypes">
+      <UniqueIdentifier>{9bf4f231-0e44-4402-9f1e-f969115ec661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actor\ComponentTypes">
+      <UniqueIdentifier>{6123cb5e-cbbb-4923-b42c-a45ff242f98e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{e4e145a1-0202-494d-bd8b-709b1eea63d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PongComponents">
+      <UniqueIdentifier>{426a0af4-efe9-4f29-aba0-441fb399a2c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,16 +74,16 @@
       <Filter>Source Files\TinyXml</Filter>
     </ClCompile>
     <ClCompile Include="ActorFactory.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\Actor</Filter>
     </ClCompile>
     <ClCompile Include="VisualComponent.cpp">
-      <Filter>Source Files\Actors\ComponentTypes</Filter>
+      <Filter>Source Files\Actor\ComponentTypes</Filter>
     </ClCompile>
     <ClCompile Include="TestComponents.cpp">
-      <Filter>Source Files\Actors\ComponentTypes</Filter>
+      <Filter>Source Files\Actor\ComponentTypes</Filter>
     </ClCompile>
     <ClCompile Include="KeyboardHandler.cpp">
       <Filter>Source Files\Input</Filter>
@@ -95,7 +98,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PhysicalComponent.cpp">
-      <Filter>Source Files\Actors\ComponentTypes</Filter>
+      <Filter>Source Files\Actor\ComponentTypes</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files\Physics</Filter>
@@ -104,10 +107,19 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="PaddleComponent.cpp">
-      <Filter>Source Files\Actors\ComponentTypes</Filter>
+      <Filter>Source Files\Actor\ComponentTypes</Filter>
     </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>Source Files\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="BallComponent.cpp">
+      <Filter>Source Files\Actor\ComponentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Volley.cpp">
+      <Filter>Source Files\PongComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Match.cpp">
+      <Filter>Source Files\PongComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,7 +133,7 @@
       <Filter>Source Files\Event</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\Actor</Filter>
     </ClInclude>
     <ClInclude Include="tinyxml2.h">
       <Filter>Source Files\TinyXml</Filter>
@@ -136,7 +148,7 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Source Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>Source Files\Physics</Filter>
@@ -145,54 +157,60 @@
       <Filter>Source Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Vec2D.h">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Source Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Pong.h">
+      <Filter>Source Files\PongComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="test1.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="test.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="test2.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="test3.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="test4.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="TestPhysical.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="TestVisual.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="TestPhysVis.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="Circle.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="Square.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="VerticalPaddle.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="HorizontalPaddle.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
     <Xml Include="Bumper.xml">
-      <Filter>Source Files\Actors\ActorTypes</Filter>
+      <Filter>Source Files\Actor\ActorTypes</Filter>
+    </Xml>
+    <Xml Include="Ball.xml">
+      <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>
