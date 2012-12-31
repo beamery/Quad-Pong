@@ -60,6 +60,7 @@
     <Xml Include="Ball.xml" />
     <Xml Include="Bumper.xml" />
     <Xml Include="Circle.xml" />
+    <Xml Include="Field.xml" />
     <Xml Include="HorizontalPaddle.xml">
       <SubType>Designer</SubType>
     </Xml>

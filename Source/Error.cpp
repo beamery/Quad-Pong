@@ -38,6 +38,8 @@ void Error::print(Status status)
 		cerr << "paddle not assigned a player"; break;
 	case INVALID_ORIENTATION_ERR:
 		cerr << "paddle orientation not valid"; break;
+	case SCORE_ERR:
+		cerr << "invalid scoring event" << endl;
 
 	default:	
 		cerr << "undefined error code: " << status;

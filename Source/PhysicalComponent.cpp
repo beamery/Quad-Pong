@@ -59,8 +59,10 @@ void PhysicalComponent::init(XMLElement *xmlData)
 
 void PhysicalComponent::postInit() 
 {
-	forces.clear();
-	impulses.clear();
+	forces.x = 0; 
+	forces.y = 0;
+	impulses.x = 0;
+	impulses.y = 0;
 	vel.x = 0;
 	vel.y = 0;
 }
@@ -70,16 +72,11 @@ void PhysicalComponent::update(double totalTime, double elapsedTime)
 	if (movable)
 	{
 		// apply forces to the object
-		for (auto i = forces.begin(); i != forces.end(); i++)
-		{
-			vel = vel + ((*i) * elapsedTime);
-		}
+		vel = vel + (forces * elapsedTime);
 		// apply impulses to the object and then get rid of them
-		for (auto i = impulses.begin(); i != impulses.end(); i++)
-		{
-			vel = vel + (*i);
-		}
-		impulses.clear();
+		vel = vel + impulses;
+		impulses.x = 0;
+		impulses.y = 0;
 		
 		// update the position
 		pos = pos + (vel * elapsedTime);
@@ -100,16 +97,7 @@ void PhysicalComponent::setPos(double x, double y)
 
 void PhysicalComponent::removeForce(Vec2D<double> f)
 {
-	for (auto i = forces.begin(); i != forces.end(); i++)
-	{
-		if (*i == f)
-		{
-			forces.erase(i);
-			return;
-		}
-
-	}
-
+	forces = forces - f;
 }
 
 void PhysicalComponent::print()
@@ -130,14 +118,8 @@ void PhysicalComponent::print()
 	}
 	cout << "\t" << "pos:\t\t(" << pos.x << ", " << pos.y << ")" << endl;
 	cout << "\t" << "forces:" << endl;
-	for (auto i = forces.begin(); i != forces.end(); i++)
-	{
-		cout << "\t\t" << "(" << (*i).x << ", " << (*i).y << ")" << endl;
-	}
+	cout << "\t\t" << "(" << forces.x << ", " << forces.y << ")" << endl;
 	cout << "\t" << "impulses:" << endl;
-	for (auto i = impulses.begin(); i != impulses.end(); i++)
-	{
-		cout << "\t\t" << "(" << (*i).x << ", " << (*i).y << ")" << endl;
-	}
+	cout << "\t\t" << "(" << impulses.x << ", " << impulses.y << ")" << endl;
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Actor>
+  <Physical>
+    <Position x="400" y="300" />
+    <Rect h="600" w="800" />
+  </Physical>
+</Actor>

@@ -212,6 +212,9 @@
     <Xml Include="Ball.xml">
       <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
+    <Xml Include="Field.xml">
+      <Filter>Source Files\Actor\ActorTypes</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Text Include="notes.md">

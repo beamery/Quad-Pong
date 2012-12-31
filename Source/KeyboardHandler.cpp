@@ -9,12 +9,19 @@ void KeyboardHandler::onKeyDown(Event e)
 	IEventData *data = keyMap[e.key.code];
 	switch (data->getEventType())
 	{
-	case PADDLE_MOVE:
-		PaddleMoveEvtData *pEvent = (PaddleMoveEvtData*)data;
-		pEvent->setStart(true);
-		EventManager::get()->queueEvent((IEventData*)pEvent);
+		case PADDLE_MOVE:
+		{
+			PaddleMoveEvtData *pEvent = (PaddleMoveEvtData*)data;
+			pEvent->setStart(true);
+			EventManager::get()->queueEvent((IEventData*)pEvent);
+		}
+		break;
+		case LAUNCH_BALL:
+			EventManager::get()->queueEvent(data);
+			break;
+	default:
+		break;
 	}
-
 }
 
 void KeyboardHandler::onKeyUp(Event e)

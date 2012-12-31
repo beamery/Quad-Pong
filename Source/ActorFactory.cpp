@@ -23,7 +23,7 @@ ActorComponent * createPaddleComponent()
 }
 ActorComponent * createBallComponent()
 {
-	return (ActorComponent *)(new PaddleComponent());
+	return (ActorComponent *)(new BallComponent());
 }
 
 ActorFactory *ActorFactory::globalActorFactory = nullptr;

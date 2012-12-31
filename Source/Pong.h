@@ -6,23 +6,28 @@
 #include "Collision.h"
 #include "Event.h"
 
-class Volley
+class Volley : IEventListener
 {
 public:
 	Volley(HumanView *h) : humanView(h) { init(); }
 	void init();
 	void reset();
 	void update(double totalTime, double elapsedTime);
+	virtual void processEvent(IEventData *e);
 
 private:
+	void onScore(ScoreEvtData *event);
+	void onLaunchBall(LaunchBallEvtData *event);
+
 	void resetPlayerPos(int player, Actor * &horiz, Actor * &vert);
 	void createPlayer(int player, Actor	* &horiz, Actor * &vert);
 	void makeBumpers();
-	void resetBallPos();
+	void resetBall();
 	void makeBall();
 	RelativeDir getRelDir(Actor *ball, Actor *paddle);
 
 	HumanView *humanView;
+	bool isReset;
 
 	vector<Actor *> paddles;
 	vector<Actor *> bumpers;
@@ -37,6 +42,8 @@ private:
 	Actor *bumperTR;
 
 	Actor *ball;
+
+	Actor *field;
 };
 
 class Match

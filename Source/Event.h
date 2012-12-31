@@ -13,7 +13,7 @@ using namespace std;
 enum EventType
 {
 	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION, PADDLE_MOVE,
-	BUMPER_PADDLE_COLL, BALL_PADDLE_COLL,
+	BUMPER_PADDLE_COLL, BALL_PADDLE_COLL, BALL_BUMPER_COLL, SCORE, LAUNCH_BALL,
 };
 
 enum Direction
@@ -123,20 +123,57 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 // Event class which contains data for ball-paddle collisions.
 ////////////////////////////////////////////////////////////////////////////////
+class Actor; // used to allow actors be sent in event data
 class BallPaddleCollEvtData : IEventData
 {
 public:
-	BallPaddleCollEvtData(ActorID paddle, RelativeDir r) :
+	BallPaddleCollEvtData(Actor *p, RelativeDir r) :
 		IEventData(BALL_PADDLE_COLL, "Ball paddle collision"),
-		paddle(paddle), relDir(r) {}
+		paddle(p), relDir(r) {}
 
-	ActorID getPaddle() { return paddle; }
+	Actor * getPaddle() { return paddle; }
 	RelativeDir getRelDir() { return relDir; }
 
 private:
-	ActorID paddle;
+	Actor *paddle;
 	RelativeDir relDir;
 };
+
+////////////////////////////////////////////////////////////////////////////////
+// Event class which contains data for ball-bumper collisions.
+////////////////////////////////////////////////////////////////////////////////
+class BallBumperCollEvtData : IEventData
+{
+public:
+	BallBumperCollEvtData(Actor *bumper) :
+		IEventData(BALL_BUMPER_COLL, "Bumper paddle collision"),
+		bumper(bumper) {}
+
+	Actor * getBumper() { return bumper; }
+
+private:
+	Actor *bumper;
+};
+
+class ScoreEvtData : IEventData
+{
+public:
+	ScoreEvtData(int scorer) :
+		IEventData(SCORE, "Score event"),
+		scorer(scorer) {}
+
+	int getScorer() { return scorer; }
+
+private:
+	int scorer;
+};
+
+class LaunchBallEvtData : IEventData
+{
+public:
+	LaunchBallEvtData() : IEventData(LAUNCH_BALL, "Launch ball") {}
+};
+
 
 //////////////////////////////// EVENT LISTENER ////////////////////////////////
 
@@ -151,40 +188,6 @@ public:
 	virtual void processEvent(IEventData *e) = 0;
 };
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Classes which inherit from this class are notified whenever a 
-// CHANGE_GAME_STATE event is triggered.
-////////////////////////////////////////////////////////////////////////////////
-class ChangeGameStateListener : IEventListener
-{
-public:
-	ChangeGameStateListener() {}
-	virtual void processEvent(IEventData *e);
-};
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Classes which inherit from this class are notified whenever a 
-// PADDLE_MOVE event is triggered.
-////////////////////////////////////////////////////////////////////////////////
-class PaddleMoveListener : public IEventListener
-{
-public:
-	PaddleMoveListener() {}
-	virtual void processEvent(IEventData *e);
-};
-
-////////////////////////////////////////////////////////////////////////////////
-// Classes which inherit from this class are notified whenever a 
-// BUMPER_PADDLE_COLL event is triggered.
-////////////////////////////////////////////////////////////////////////////////
-class BumperPaddleListener : public IEventListener
-{
-public:
-	BumperPaddleListener() {}
-	virtual void processEvent(IEventData *e);
-};
 
 //////////////////////////////// EVENT MANAGER /////////////////////////////////
 

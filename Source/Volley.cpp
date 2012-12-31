@@ -2,6 +2,11 @@
 
 void Volley::init()
 {
+	isReset = true;
+	EventManager::get()->addListener((IEventListener*)this, LAUNCH_BALL);
+	EventManager::get()->addListener((IEventListener*)this, SCORE);
+	field = ActorFactory::get()->createActor("Field.xml");
+
 	createPlayer(1, p1Horiz, p1Vert);
 	createPlayer(2, p2Horiz, p2Vert);
 	paddles.push_back(p1Horiz);
@@ -15,9 +20,10 @@ void Volley::init()
 
 void Volley::reset()
 {
-	resetPlayerPos(1, p1Horiz, p1Vert);
-	resetPlayerPos(2, p2Horiz, p2Vert);
-	resetBallPos();
+	//resetPlayerPos(1, p1Horiz, p1Vert);
+	//resetPlayerPos(2, p2Horiz, p2Vert);
+	resetBall();
+	isReset = true;
 }
 
 
@@ -55,7 +61,78 @@ void Volley::update(double totalTime, double elapsedTime)
 	ball->update(totalTime, elapsedTime);
 	humanView->drawActor(ball);
 
+	PhysicalComponent *bPhys = (PhysicalComponent*)ball->getComponent(PHYSICAL);
+	for (auto i = paddles.begin(); i != paddles.end(); i++)
+	{
+		PhysicalComponent *pPhys = (PhysicalComponent*)(*i)->getComponent(PHYSICAL);
+		if (Collision::collide(pPhys, bPhys))
+		{
+			RelativeDir relDir = getRelDir(ball, *i);
+			BallPaddleCollEvtData *e = new BallPaddleCollEvtData(*i, relDir);
+			EventManager::get()->queueEvent((IEventData*)e);
+		}
+	}
+	for (auto i = bumpers.begin(); i != bumpers.end(); i++)
+	{
+		PhysicalComponent *bumpPhys = (PhysicalComponent*)(*i)->getComponent(PHYSICAL);
+		if (Collision::collide(bPhys, bumpPhys))
+		{
+			BallBumperCollEvtData *e = new BallBumperCollEvtData(*i);
+			EventManager::get()->queueEvent((IEventData*)e);
+		}
+	}
+	PhysicalComponent *fieldPhys = (PhysicalComponent*)field->getComponent(PHYSICAL);
+	// if the ball doesn't collide with the field
+	if (!Collision::collide(bPhys, fieldPhys))
+	{
+		int scorer;
+		switch (getRelDir(ball, field))
+		{
+		case R_LEFT:
+		case R_UP:
+			scorer = 2;
+			break;
+		case R_RIGHT:
+		case R_DOWN:
+			scorer = 1;
+			break;
+		default:
+			throw SCORE_ERR;
+		}
+		ScoreEvtData *e = new ScoreEvtData(scorer);
+		EventManager::get()->queueEvent((IEventData*)e);
+	}
 }
+
+void Volley::processEvent(IEventData *e)
+{
+	switch (e->getEventType())
+	{
+	case SCORE:
+		onScore((ScoreEvtData*)e);
+		break;
+	case LAUNCH_BALL:
+		onLaunchBall((LaunchBallEvtData*)e);
+		break;
+	}
+}
+
+void Volley::onScore(ScoreEvtData *event)
+{
+	reset();
+}
+
+void Volley::onLaunchBall(LaunchBallEvtData *event)
+{
+	if (isReset)
+	{
+		Vec2D<double> direction(rand() % 100 - 50, rand() % 100 - 50);
+		direction = direction.normalize();
+		((PhysicalComponent*)ball->getComponent(PHYSICAL))->addImpulse(direction * 100);
+	}
+	isReset = false;
+}
+
 
 void Volley::resetPlayerPos(int player, Actor * &horiz, Actor * &vert)
 {
@@ -118,17 +195,18 @@ void Volley::makeBumpers()
 	bumpers.push_back(bumperTR);
 }
 
-void Volley::resetBallPos()
+void Volley::resetBall()
 {
 	PhysicalComponent *phys = (PhysicalComponent*)ball->getComponent(PHYSICAL);
 	phys->setPos(400, 300);
+	phys->clearVelocity();
+	phys->clearForces();
 }
 
 void Volley::makeBall()
 {
 	ball = ActorFactory::get()->createActor("Ball.xml");
 	PhysicalComponent *phys = (PhysicalComponent*)ball->getComponent(PHYSICAL);
-	phys->addImpulse(Vec2D<double>(rand() % 100 - 50, rand() % 100 - 50));
 }
 
 RelativeDir Volley::getRelDir(Actor *ball, Actor *paddle)

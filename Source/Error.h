@@ -28,6 +28,9 @@ enum Status
 
 // Paddle errors
 	INVALID_PLAYER_ERR, INVALID_ORIENTATION_ERR,
+
+// Game errors
+	SCORE_ERR,
 };
 
 class Error

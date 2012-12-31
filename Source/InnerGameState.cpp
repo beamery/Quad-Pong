@@ -52,4 +52,7 @@ void InnerGameState::bindKeys()
 	humanView->keyboardHandler->bind(sf::Keyboard::Left, (IEventData*)moveLeftP2);
 	humanView->keyboardHandler->bind(sf::Keyboard::Down, (IEventData*)moveDownP2);
 	humanView->keyboardHandler->bind(sf::Keyboard::Right, (IEventData*)moveRightP2);
+
+	LaunchBallEvtData *launchBall = new LaunchBallEvtData();
+	humanView->keyboardHandler->bind(sf::Keyboard::Space, (IEventData*)launchBall);
 }

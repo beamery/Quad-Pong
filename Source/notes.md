@@ -8,7 +8,7 @@ Next Tasks
 ----------
 - Modify renderer to handle batch rendering
 - Figure out how to detect memory leaks
-- Transform raw input events into game events
+- Implement scoreboard
 
 Redesign of Event System
 ------------------------

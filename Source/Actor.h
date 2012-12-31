@@ -128,10 +128,12 @@ public:
 	bm::Shape * getShape() { return shape; }
 	Vec2D<double> getPos() { return pos; }
 	Vec2D<double> getVelocity() { return vel; }
-	vector< Vec2D<double> > getForces() { return forces; }
-	vector< Vec2D<double> > getImpulses() { return impulses; }
-	void addImpulse(Vec2D<double> i) { impulses.push_back(i); }
-	void addForce(Vec2D<double> f) { forces.push_back(f); }
+	Vec2D<double> getForces() { return forces; }
+	Vec2D<double> getImpulses() { return impulses; }
+	void addImpulse(Vec2D<double> i) { impulses = impulses + i; }
+	void addForce(Vec2D<double> f) { forces = forces + f; }
+	void clearForces() { forces.x = 0; forces.y = 0; }
+	void clearVelocity() { vel.x = 0; vel.y = 0; }
 	void setPos(double x, double y);
 	void removeForce(Vec2D<double> f);
 
@@ -144,8 +146,8 @@ private:
 	bm::Shape *shape;
 	Vec2D<double> pos;
 	Vec2D<double> vel;
-	vector< Vec2D<double> > forces;
-	vector< Vec2D<double> > impulses;
+	Vec2D<double> forces;
+	Vec2D<double> impulses;
 };
 
 class PaddleComponent : ActorComponent, IEventListener
@@ -170,16 +172,16 @@ private:
 
 };
 
-class BallComponent : ActorComponent
+class BallComponent : ActorComponent, IEventListener
 {
 public:
-	virtual void init(XMLElement *xmlData);
 	virtual void postInit();
-	virtual void update(double totalTime, double elapsedTime);
 	virtual void processEvent(IEventData *e);
 	void onBallPaddleColl(BallPaddleCollEvtData *event);
+	void onBallBumperColl(BallBumperCollEvtData *event);
 	virtual ComponentType getComponentType() { return BALL; }
 };
+
 
 
 //////////////////// ACTOR ////////////////////
