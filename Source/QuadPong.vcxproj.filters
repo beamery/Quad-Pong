@@ -121,6 +121,12 @@
     <ClCompile Include="Match.cpp">
       <Filter>Source Files\PongComponents</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreboardComponent.cpp">
+      <Filter>Source Files\Actor\ComponentTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -167,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="Pong.h">
       <Filter>Source Files\PongComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

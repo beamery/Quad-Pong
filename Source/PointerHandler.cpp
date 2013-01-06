@@ -1,7 +1,7 @@
 #include "Input.h"
 #include "Event.h"
 
-void PointerHandler::onPointerMove(Event e, Window &w) 
+void PointerHandler::onPointerMove(Event e, sf::RenderWindow *w) 
 {
 	//std::cout << "Mouse at (" << Mouse::getPosition(w).x << ", " << Mouse::getPosition(w).y << ")" << std::endl;
 }

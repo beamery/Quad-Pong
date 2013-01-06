@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 #include <map>
 #include "Event.h"
 
@@ -24,7 +25,7 @@ protected:
 class PointerHandler
 {
 public:
-	void onPointerMove(Event e, Window &w);
+	void onPointerMove(Event e, sf::RenderWindow *w);
 	void onPointerButtonDown(Event e);
 	void onPointerButtonUp(Event e);
 	void onWheelMove(Event e);

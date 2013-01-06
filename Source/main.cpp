@@ -5,6 +5,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include "GameState.h"
 #include "Actor.h"
@@ -16,7 +17,7 @@ bool handleEvent(sf::Event event);
 void initGL(int width, int height);
 void initEventManager();
 void initActorFactory();
-void initGameState();
+void initGameState(sf::RenderWindow *w);
 void initTextures();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,16 +32,20 @@ int main()
 	settings.antialiasingLevel = 4;
 	settings.majorVersion = 3;
 	settings.minorVersion = 3;
-	sf::Window window(sf::VideoMode(800, 600, 32), "Quad Pong", sf::Style::Default, settings);
-	window.setKeyRepeatEnabled(false);
+	sf::RenderWindow *window = new sf::RenderWindow(
+		sf::VideoMode(800, 600, 32), 
+		"Quad Pong", 
+		sf::Style::Default, settings);
+
+	window->setKeyRepeatEnabled(false);
 	sf::Clock clock;
 	sf::Clock totalClock;
 
 	// Initialize game data
-	initGL(window.getSize().x, window.getSize().y);
+	initGL(window->getSize().x, window->getSize().y);
 	initEventManager();
 	initActorFactory();
-	initGameState();
+	initGameState(window);
 	initTextures();
 
     // Start main loop
@@ -68,7 +73,7 @@ int main()
 
 		// Handle system events
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			Running = handleEvent(event); // STUB CODE, REMOVE LATER
 
@@ -106,7 +111,7 @@ int main()
 		//drawTriangle(background, totalTime, elapsedTime);
 		//drawCircle(Mouse::getPosition(window).x, Mouse::getPosition(window).y, 70, 360);
 
-		window.display();
+		window->display();
     }
 	
     return EXIT_SUCCESS;
@@ -153,14 +158,14 @@ void initActorFactory()
 ////////////////////////////////////////////////////////////////////////////////
 // Initialize our state manager, called once at program startup
 ////////////////////////////////////////////////////////////////////////////////
-void initGameState()
+void initGameState(sf::RenderWindow *w)
 {
 	StateManager *stateManager = new StateManager(true);
 	EventManager::get()->addListener((IEventListener*)stateManager, CHANGE_GAME_STATE);
 
-	MainMenuState *mainMenu = new MainMenuState();
-	InnerGameState *innerGame = new InnerGameState();
-	GameOverState *gameOver = new GameOverState();
+	MainMenuState *mainMenu = new MainMenuState(w);
+	InnerGameState *innerGame = new InnerGameState(w);
+	GameOverState *gameOver = new GameOverState(w);
 
 	StateManager::get()->addState("main_menu", mainMenu);
 	StateManager::get()->addState("inner_game", innerGame);

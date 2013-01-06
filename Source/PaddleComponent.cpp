@@ -21,7 +21,7 @@ void PaddleComponent::postInit()
 {
 	EventManager::get()->addListener((IEventListener*)this, PADDLE_MOVE);
 	EventManager::get()->addListener((IEventListener*)this, BUMPER_PADDLE_COLL);
-	paddleForce = 2600;
+	paddleForce = 3000;
 	forceOfFriction = 2000;
 }
 

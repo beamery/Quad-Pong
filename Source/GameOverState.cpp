@@ -7,7 +7,7 @@
 void GameOverState::init()
 {
 	timer = 0;
-	humanView = new HumanView();
+	humanView = new HumanView(window);
 }
 
 void GameOverState::update(double totalTime, double elapsedTime)

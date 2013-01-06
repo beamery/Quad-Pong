@@ -6,7 +6,7 @@
 void InnerGameState::init()
 {
 	timer = 0;
-	humanView = new HumanView();
+	humanView = new HumanView(window);
 	bindKeys();
 	
 	match = new Match(humanView);
@@ -19,6 +19,7 @@ void InnerGameState::update(double totalTime, double elapsedTime)
 	timer += elapsedTime;
 
 	match->update(totalTime, elapsedTime);
+	//humanView->drawText("DICK", Vec2D<double>(400, 300));
 
 	/*if (timer > 10)
 	{

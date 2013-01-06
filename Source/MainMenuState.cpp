@@ -7,7 +7,7 @@
 void MainMenuState::init()
 {
 	timer = 0;
-	humanView = new HumanView();
+	humanView = new HumanView(window);
 }
 
 void MainMenuState::update(double totalTime, double elapsedTime)

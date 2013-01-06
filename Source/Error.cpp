@@ -39,7 +39,11 @@ void Error::print(Status status)
 	case INVALID_ORIENTATION_ERR:
 		cerr << "paddle orientation not valid"; break;
 	case SCORE_ERR:
-		cerr << "invalid scoring event" << endl;
+		cerr << "invalid scoring event"; break;
+	case FONT_LOAD_ERR:
+		cerr << "failed to load font"; break;
+	case INVALID_FONT_ERR:
+		cerr << "font manager does not have that font"; break;
 
 	default:	
 		cerr << "undefined error code: " << status;

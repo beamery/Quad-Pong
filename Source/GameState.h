@@ -7,23 +7,27 @@
 #include "Event.h"
 #include "Views.h"
 #include "Pong.h"
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
 class IGameState
 {
 public:
+	IGameState(sf::RenderWindow *w) : window(w) {}
 	virtual void init() = 0;
 	virtual void update(double totalTime, double elapsedTime) = 0;
 	HumanView * getHumanView() { return humanView; }
 
 protected:
 	HumanView *humanView;
+	sf::RenderWindow *window;
 };
 
 class MainMenuState : public IGameState
 {
 public:
+	MainMenuState(sf::RenderWindow *w) : IGameState(w) {}
 	virtual void init();
 	virtual void update(double totalTime, double elapsedTime);
 private:
@@ -33,6 +37,7 @@ private:
 class InnerGameState : public IGameState 
 {
 public:
+	InnerGameState(sf::RenderWindow *w) : IGameState(w) {}
 	virtual void init();
 	virtual void update(double totalTime, double elapsedTime);
 private:
@@ -45,6 +50,7 @@ private:
 class GameOverState : public IGameState
 {
 public:
+	GameOverState(sf::RenderWindow *w) : IGameState(w) {}
 	virtual void init();
 	virtual void update(double totalTime, double elapsedTime);
 private:

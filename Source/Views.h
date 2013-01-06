@@ -4,6 +4,10 @@
 #include "Actor.h"
 #include "Input.h"
 #include "Event.h"
+#include "Utils.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/OpenGL.hpp>
+#include <SFML/Window.hpp>
 
 enum GameViewType
 {
@@ -23,13 +27,14 @@ public:
 	// input handling
 	KeyboardHandler *keyboardHandler;
 	PointerHandler *pointerHandler;
+	sf::RenderWindow *window;
 	
-	HumanView(Actor * a = 0);
+	HumanView(sf::RenderWindow *w, Actor * a = 0);
 	virtual void update(double totalTime, double elapsedTime);
 
 	// rendering
 	virtual void drawActor(Actor *a); // <-- Replace with drawing screen elements?
-	virtual void drawText(/* params */);
+	virtual void drawText(string text, Vec2D<double> position, int size = 36);
 	virtual void drawUI(/* params */);
 	virtual void setCameraOffset(/* params */);
 

@@ -26,7 +26,7 @@ class Actor;
 
 enum ComponentType
 {
-	BASE_COMPONENT, VISUAL, PHYSICAL, PADDLE, TEST1, TEST2, BALL,
+	BASE_COMPONENT, VISUAL, PHYSICAL, PADDLE, TEST1, TEST2, BALL, SCOREBOARD,
 };
 
 enum Orientation
@@ -180,6 +180,21 @@ public:
 	void onBallPaddleColl(BallPaddleCollEvtData *event);
 	void onBallBumperColl(BallBumperCollEvtData *event);
 	virtual ComponentType getComponentType() { return BALL; }
+};
+
+class ScoreboardComponent : ActorComponent, IEventListener
+{
+public:
+	virtual void postInit();
+	void reset();
+	virtual void processEvent(IEventData *e);
+	void onScore(ScoreEvtData *event);
+	int getP1Score() { return p1Score; }
+	int getP2Score() { return p2Score; }
+	virtual ComponentType getComponentType() { return SCOREBOARD; }
+
+private:
+	int p1Score, p2Score;
 };
 
 

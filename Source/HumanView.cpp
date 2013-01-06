@@ -1,11 +1,10 @@
 #include "Views.h"
-#include <SFML/OpenGL.hpp>
 
-HumanView::HumanView(Actor *a) : 
+HumanView::HumanView(sf::RenderWindow *w, Actor *a) : 
 	actor(a),
 	keyboardHandler(new KeyboardHandler()), 
-	pointerHandler(new PointerHandler())
-{}
+	pointerHandler(new PointerHandler()),
+	window(w) {}
 
 void HumanView::update(double totalTime, double elapsedTime)
 {
@@ -59,9 +58,19 @@ void HumanView::drawActor(Actor *a)
 	}
 }
 
-void HumanView::drawText(/* params */)
+void HumanView::drawText(string text, Vec2D<double> position, int size)
 {
+	//sf::Font font;
+	//sf::Text sfText(text, font);
+	//sfText.setPosition(position.x, position.y);
+	//sfText.setCharacterSize(size);
 
+	// save GL state
+	//window->pushGLStates();
+	// draw
+	//window->draw(sfText);
+	// restore GL state
+	//window->popGLStates();
 }
 
 void HumanView::drawUI(/* params */)
