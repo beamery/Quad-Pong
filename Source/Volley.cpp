@@ -126,7 +126,7 @@ void Volley::onLaunchBall(LaunchBallEvtData *event)
 {
 	if (isReset)
 	{
-		Vec2D<double> direction(rand() % 100 - 50, rand() % 100 - 50);
+		Vec2D<double> direction(rand() % 300 - 150, rand() % 300 - 150);
 		direction = direction.normalize();
 		((PhysicalComponent*)ball->getComponent(PHYSICAL))->addImpulse(direction * 100);
 	}

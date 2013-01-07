@@ -25,6 +25,11 @@ ActorComponent * createBallComponent()
 {
 	return (ActorComponent *)(new BallComponent());
 }
+ActorComponent * createScoreboardComponent()
+{
+	return (ActorComponent *)(new ScoreboardComponent());
+}
+
 
 ActorFactory *ActorFactory::globalActorFactory = nullptr;
 
@@ -36,6 +41,7 @@ ActorFactory::ActorFactory(bool global) : lastActorId(0)
 	componentCreatorMap["Test2"] = createTestComponent2;
 	componentCreatorMap["Paddle"] = createPaddleComponent;
 	componentCreatorMap["Ball"] = createBallComponent;
+	componentCreatorMap["Scoreboard"] = createScoreboardComponent;
 
 	if (global)
 		ActorFactory::globalActorFactory = this;

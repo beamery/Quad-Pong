@@ -67,6 +67,7 @@
     <Xml Include="HorizontalPaddle.xml">
       <SubType>Designer</SubType>
     </Xml>
+    <Xml Include="Scoreboard.xml" />
     <Xml Include="Square.xml" />
     <Xml Include="test.xml" />
     <Xml Include="test1.xml">

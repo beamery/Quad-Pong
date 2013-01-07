@@ -5,6 +5,7 @@
 #include "Views.h"
 #include "Collision.h"
 #include "Event.h"
+#include <string>
 
 class Volley : IEventListener
 {
@@ -46,16 +47,20 @@ private:
 	Actor *field;
 };
 
-class Match
+class Match : IEventListener
 {
 public:
 	Match(HumanView *h) : humanView(h) { init(); } 
 	void init();
 	void update(double totalTime, double elapsedTime);
+	virtual void processEvent(IEventData *e);
 
 private:
+	void onMatchOver(MatchOverEvtData *event);
+	
 	HumanView *humanView;
 	Volley *volley;
+	Actor *scoreboard;
 };
 
 #endif

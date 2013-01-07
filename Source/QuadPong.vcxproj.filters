@@ -224,6 +224,9 @@
     <Xml Include="Field.xml">
       <Filter>Source Files\Actor\ActorTypes</Filter>
     </Xml>
+    <Xml Include="Scoreboard.xml">
+      <Filter>Source Files\Actor\ActorTypes</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Text Include="notes.md">

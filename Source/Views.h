@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Event.h"
 #include "Utils.h"
+#include "FontManager.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
@@ -34,7 +35,11 @@ public:
 
 	// rendering
 	virtual void drawActor(Actor *a); // <-- Replace with drawing screen elements?
-	virtual void drawText(string text, Vec2D<double> position, int size = 36);
+	virtual void drawText(string text, 
+						  Vec2D<double> position, 
+						  bm::Color c = bm::Color(255, 255, 255, 255),
+						  string font = "fixed_sys",
+						  int size = 36); 
 	virtual void drawUI(/* params */);
 	virtual void setCameraOffset(/* params */);
 

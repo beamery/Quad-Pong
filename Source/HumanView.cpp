@@ -58,19 +58,20 @@ void HumanView::drawActor(Actor *a)
 	}
 }
 
-void HumanView::drawText(string text, Vec2D<double> position, int size)
+void HumanView::drawText(string text, Vec2D<double> position, bm::Color c, string font, int size)
 {
-	//sf::Font font;
-	//sf::Text sfText(text, font);
-	//sfText.setPosition(position.x, position.y);
-	//sfText.setCharacterSize(size);
+	sf::Font *f = FontManager::get()->getFont(font);
+	sf::Text sfText((sf::String)text, *f);
+	sfText.setColor(sf::Color(c.r, c.g, c.b, c.a));
+	sfText.setPosition(position.x, position.y);
+	sfText.setCharacterSize(size);
 
 	// save GL state
-	//window->pushGLStates();
+	window->pushGLStates();
 	// draw
-	//window->draw(sfText);
+	window->draw(sfText);
 	// restore GL state
-	//window->popGLStates();
+	window->popGLStates();
 }
 
 void HumanView::drawUI(/* params */)

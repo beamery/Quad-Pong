@@ -10,6 +10,7 @@
 #include "GameState.h"
 #include "Actor.h"
 #include "Tests.h"
+#include "FontManager.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ void initEventManager();
 void initActorFactory();
 void initGameState(sf::RenderWindow *w);
 void initTextures();
+void initFonts();
 
 ////////////////////////////////////////////////////////////////////////////////
 // Main Entry point of application
@@ -47,6 +49,7 @@ int main()
 	initActorFactory();
 	initGameState(window);
 	initTextures();
+	initFonts();
 
     // Start main loop
     bool Running = true;
@@ -183,6 +186,15 @@ void initTextures()
 
 	TextureManager::get()->loadTexture("../Assets/Circle.png", "circle");
 }
+
+void initFonts()
+{
+	FontManager *fontManager = new FontManager(true);
+
+	FontManager::get()->loadFont("../Assets/arial.ttf", "arial");
+	FontManager::get()->loadFont("../Assets/fixedsys.ttf", "fixed_sys");
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////////////

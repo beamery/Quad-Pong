@@ -2,6 +2,7 @@
 
 void ScoreboardComponent::postInit()
 {
+	EventManager::get()->addListener((IEventListener*)this, SCORE);
 	reset();
 }
 
