@@ -14,7 +14,7 @@ enum EventType
 {
 	BASE_EVENT, CHANGE_GAME_STATE, MOUSE_POSITION, PADDLE_MOVE,
 	BUMPER_PADDLE_COLL, BALL_PADDLE_COLL, BALL_BUMPER_COLL, SCORE, LAUNCH_BALL,
-	MATCH_OVER,
+	MATCH_OVER, GAME_OVER,
 };
 
 enum Direction
@@ -188,6 +188,18 @@ public:
 	LaunchBallEvtData() : IEventData(LAUNCH_BALL, "Launch ball") {}
 };
 
+class GameOverEvtData : IEventData
+{
+public:
+	GameOverEvtData(int winner) :
+		IEventData(GAME_OVER, "Game over"),
+		winner(winner) {}
+
+	int getWinner() { return winner; }
+
+private:
+	int winner;
+};
 
 //////////////////////////////// EVENT LISTENER ////////////////////////////////
 

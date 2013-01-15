@@ -47,14 +47,17 @@ private:
 	Match *match;
 };
 
-class GameOverState : public IGameState
+class GameOverState : public IGameState, IEventListener
 {
 public:
 	GameOverState(sf::RenderWindow *w) : IGameState(w) {}
 	virtual void init();
 	virtual void update(double totalTime, double elapsedTime);
+	virtual void processEvent(IEventData *e);
 private:
+	void onGameOver(GameOverEvtData *event);
 	double timer;
+	int winner;
 };
 
 class StateManager : public IEventListener	

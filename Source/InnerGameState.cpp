@@ -20,15 +20,6 @@ void InnerGameState::update(double totalTime, double elapsedTime)
 
 	match->update(totalTime, elapsedTime);
 
-	/*if (timer > 10)
-	{
-
-		ChangeGameStateEvtData *data = 
-			new ChangeGameStateEvtData("game_over", "inner_game", true);
-
-		EventManager::get()->queueEvent((IEventData*)data);
-	}*/
-
 }
 
 void InnerGameState::bindKeys()
