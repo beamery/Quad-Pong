@@ -40,7 +40,7 @@ void GameOverState::update(double totalTime, double elapsedTime)
 	if (timer > 5)
 	{
 		ChangeGameStateEvtData *data = 
-			new ChangeGameStateEvtData("main_menu", "game_over", true);
+			new ChangeGameStateEvtData("inner_game", "game_over", true);
 
 		EventManager::get()->queueEvent((IEventData*)data);
 	}
